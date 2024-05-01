@@ -1,4 +1,5 @@
 # LittleCaesars
+- pip -r requirements.txt to install the needed things or just `pip install selenium`
 - have google chrome installed and I believe it should work
 - if not troubleshoot and do this ^^^
 ----
