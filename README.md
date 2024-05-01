@@ -1,5 +1,8 @@
 # LittleCaesars
-Email Spammer that utilizes the Chromedriver to do automated requests in order to accomplish doing so.
+- have google chrome installed and I believe it should work
+- if not troubleshoot and do this ^^^
+----
+## Email Spammer that utilizes the Chromedriver to do automated requests in order to accomplish doing so.
   - Wait for the prompt, if it's out of outline, it will still work properly.
 
 - Ways to prevent this are:
