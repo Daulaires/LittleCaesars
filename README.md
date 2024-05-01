@@ -1,5 +1,5 @@
 # LittleCaesars
-- pip -r requirements.txt to install the needed things or just `pip install selenium`
+- pip -r requirements.txt to install the needed things or just `pip install selenium`, create an account under the email you want to spam, then logout, and that is it.
 - have google chrome installed and I believe it should work
 - if not troubleshoot and do this ^^^
 ----
