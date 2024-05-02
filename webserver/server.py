@@ -1,3 +1,10 @@
+# 
+# This was made to test the functionality of the website https://www.littlecaesars.com/en-us/
+# This was made for educational purposes only.
+# Author: @Daulaires / https://www.github.com/Daulaires/LittleCaesarsEmailSpammer
+# Date: 2024-05-02
+# 
+
 import os
 import tempfile
 from flask import Flask, jsonify, render_template, request, abort

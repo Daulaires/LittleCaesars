@@ -1,3 +1,10 @@
+# 
+# This was made to test the functionality of the website https://www.littlecaesars.com/en-us/
+# This was made for educational purposes only.
+# Author: @Daulaires / https://www.github.com/Daulaires/LittleCaesarsEmailSpammer
+# Date: 2024-05-02
+# 
+
 import os
 import sys
 import logging
@@ -144,7 +151,7 @@ if args.command == 'spam':
             click_forgot_password_link(driver)
             time.sleep(1)
             enter_email(driver, args.email)
-            time.sleep(1)
+            time.sleep()
 elif args.command == 'create_account':
     # Implement the create account functionality here
     create_account(driver, args.email, args.password)

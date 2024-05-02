@@ -1,3 +1,10 @@
+/**
+ * This was made to test the functionality of the website https://www.littlecaesars.com/en-us/
+ * This was made for educational purposes only.
+ * Author: @Daulaires / https://www.github.com/Daulaires/LittleCaesarsEmailSpammer
+ * Date: 2024-05-02
+ */
+
 document.getElementById('spamForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the form from submitting normally
 

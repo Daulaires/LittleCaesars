@@ -76,9 +76,44 @@
         button[type="submit"]:hover {
             background-color: #6a5acd; /* Slightly lighter purple */
         }
+        
+        body.light-mode {
+            background-color: #e0e0e0; /* Light gray */
+            color: #0d0d0d; /* Dark text for light background */
+        }
+
+        body.dark-mode {
+            background-color: #333; /* Dark gray */
+            color: #000000; /* Light text for dark background */
+        }
+
+        body.dark-mode form {
+            background-color: #0d0d0d; /* Dark gray */
+            color: #800080; /* Light text for dark background */
+        }
+        #themeToggle {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #800080; /* Dark purple */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        #themeToggle:hover {
+            background-color: #6a5acd; /* Slightly lighter purple */
+        }
+
+
     </style>
 </head>
-<body>
+<body class="light-mode">
+    <button id="themeToggle">Toggle Dark Mode</button>
     <div class="container">
         <form id="spamForm">
             <h1>Email Spammer</h1>
@@ -88,7 +123,6 @@
             <input type="number" id="times" name="times" min="1" required><br>
             <button type="submit">Start Spamming</button>
         </form>
-
         <form id="createAccountForm">
             <h1>Create Account</h1>
             <label for="email">Email:</label>
@@ -97,11 +131,24 @@
             <input type="string" id="password" name="password" required><br>
             <button type="submit">Create Account</button>
         </form>
-        
     </div>
-
     <script src="{{ url_for('static', filename='js/spam.js') }}"></script>
     <script src="{{ url_for('static', filename='js/createAccount.js') }}"></script>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('themeToggle');
+            const body = document.body;
+    
+            toggleButton.addEventListener('click', function() {
+                if (body.classList.contains('dark-mode')) {
+                    body.classList.remove('dark-mode');
+                    body.classList.add('light-mode');
+                } else {
+                    body.classList.remove('light-mode');
+                    body.classList.add('dark-mode');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
