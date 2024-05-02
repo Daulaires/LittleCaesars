@@ -3,8 +3,12 @@
 - have google chrome installed and I believe it should work
 - if not troubleshoot and do this ^^^
 ----
+## What does it really do?
+  - Well it simply takes the html, uses selenium to then get the attribute / data I want to look for, specifically the class id, which then looks for a button in that class id to then do the automated requests
+----
 ## Email Spammer that utilizes the Chromedriver to do automated requests in order to accomplish doing so.
   - Wait for the prompt, if it's out of outline, it will still work properly.
+  - Enter the email and then the amount of times.
 
 - Ways to prevent this are:
   - When the user submits to the input refresh the page to the home page, or after certain amount of retries from the incoming IP, Block connections from that IP, or various other checks like the host computer name. Something that can correlate to the user, you get my point. and setting it up where it won't allow the user to spam the reset password in this manner.  
