@@ -58,7 +58,7 @@ psutil==5.9.7
 pyarmor.cli.core==5.4.3
 PyAudio==0.2.14
 pycparser==2.21
-pycryptodome==3.18.0
+pycryptodome==3.19.1
 pydantic==2.5.3
 pydantic_core==2.14.6
 pygame==2.5.2
