@@ -142,7 +142,7 @@ driver.get('https://littlecaesars.com/en-us/login/')
 # Handle different commands based on the parsed arguments
 if args.command == 'spam':
     # Implement the spam functionality here
-    for _ in range(args.times + 4):
+    for _ in range(args.times + 2):
         total_attempts += 1
         if test(driver):
             enter_email(driver, args.email)
