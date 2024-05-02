@@ -74,10 +74,9 @@ def create_account():
     if email in accounts:
         abort(400, description=f"Email {email} is already registered.")
 
-    # Here you would typically store the account details in a database
+    os.system(f'python static/python/index.py create_account {email} {password}')
     # For demonstration, we'll just add it to a dictionary
     accounts[email] = {"password": password}  # Storing password in plain text is insecure in real applications
-
     logging.info(f"Account created for email: {email}")
     
     return jsonify({"status": "success", "message": f"Account created for email: {email}."}), 201

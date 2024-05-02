@@ -77,8 +77,9 @@ def create_account(driver, email, password):
         confirm_password_input.clear()
         confirm_password_input.send_keys(password)
         terms_checkbox.click()
+        time.sleep(1)
         continue_button.click()
-
+        time.sleep(2)
         logging.info("\033[92mRedirected to the create account page and elements are ready.\033[0m")
     except NoSuchElementException:
         logging.error("\033[91mCreate Account link or form elements not found.\033[0m")
@@ -122,8 +123,7 @@ args = parser.parse_args()
 # Setup Chrome options
 options = webdriver.ChromeOptions()
 
-# Make it run headless
-options.add_argument('--headless')
+options.add_argument("--headless")
 # Increase the browser window size
 options.add_argument("--window-size=1920,1080")
 # Disable images
@@ -159,14 +159,6 @@ else:
     logging.error("Invalid command. Use 'spam' or 'create_account'.")
     sys.exit(1)
 
-# Display statistics
-logging.info(f"Website: {driver.current_url}")
-logging.info(f"Statistics:")
-logging.info(f"Total Attempts: {total_attempts}")
-logging.info(f"Successful Clicks: {successful_clicks}")
-logging.info(f"Forgot Password Clicks: {forgot_password_clicks}")
-
-driver.quit()
 # Display statistics
 logging.info(f"Website: {driver.current_url}")
 logging.info(f"Statistics:")
