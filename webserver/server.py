@@ -4,7 +4,6 @@
 # Author: @Daulaires / https://www.github.com/Daulaires/LittleCaesarsEmailSpammer
 # Date: 2024-05-02
 # 
-
 import os
 import tempfile
 from flask import Flask, jsonify, render_template, request, abort
