@@ -19,4 +19,4 @@
   - Why 
     - Just was a way I found most websites allowed, such as CNN.com with some little recode to the script.
     - Well there is no limit, or security setup for the reset password.
-    - Many big companies have vulnerabilities, but some just funny ones.\
+    - Many big companies have vulnerabilities, but some just funny ones.
