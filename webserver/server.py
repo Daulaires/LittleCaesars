@@ -76,6 +76,7 @@ def send_spam():
     temp_file.close()
 
     os.system(f'python static/python/index.py spam {email} {times} > {temp_file.name}')
+    os.system(f'ipconfig /flushdns')
 
     logging.info(f"Completed processing email: {email}")
     processing_emails[email] = False
