@@ -1,6 +1,7 @@
 # LittleCaesars
 - `pip -r requirements.txt` to install the needed things and 
-- Create an account under the email you want to spam, then logout, and that is it. As long there is an account created on this website it will then abuse the reset password.
+- Create an account under the email you want to spam, then logout, and that is it.
+  - As long there is an account created on this website it will then abuse the reset password. 
 - Have google chrome installed and I believe it should work
 - If not troubleshoot and do this ^^^
 ----
