@@ -1,7 +1,17 @@
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
 #notificationContainer {
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 50px; /* Adjust this value as needed to position it under the menu button */
+    right: 20px; /* Aligns the container to the right */
     z-index: 1000;
     pointer-events: none;
     display: flex;
@@ -19,10 +29,13 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border: 1px solid #333;
     opacity: 0; /* Start with the notification fully transparent */
-    transition: opacity 0.5s ease-in-out; /* Smooth transition for opacity */
 }
 
 .notification.show {
+    animation: fadeIn 0.5s ease-in-out forwards; /* Fade in animation */
     display: block;
-    opacity: 1; /* Fully visible when shown */
+}
+
+.notification.fadeOut {
+    animation: fadeOut 0.5s ease-in-out forwards; /* Fade out animation */
 }
