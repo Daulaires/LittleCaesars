@@ -1,6 +1,10 @@
+body, body.light-mode, body.dark-mode, #themeToggle {
+    transition: background-color 1s ease, color 1s ease;
+}
+
 body.light-mode {
     background-color: #e0e0e0; /* Light gray */
-    color: #0d0d0d; /* Dark text for light background */
+    color: #000000; /* Dark text for light background */
 }
 
 body.dark-mode {
@@ -9,8 +13,9 @@ body.dark-mode {
 }
 
 body.dark-mode form {
-    background-color: #0d0d0d; /* Dark gray */
+    background-color: #000000; /* Dark gray */
     color: #ffffff; /* Light text for dark background */
+    transition: background-color 1s ease, color 1s ease;
 }
 
 #themeToggle {
@@ -27,6 +32,12 @@ body.dark-mode form {
     transition: background-color 0.3s ease;
 }
 
-#themeToggle:hover {
-    background-color: #6a5acd; /* Slightly lighter purple */
+#themeToggle:hover, #themeToggle:focus {
+    animation: colorChange 2s infinite;
+}
+
+@keyframes colorChange {
+    0% { background-color: #000000; }
+    50% { background-color: #6a5acd; }
+    100% { background-color: #000000; }
 }
