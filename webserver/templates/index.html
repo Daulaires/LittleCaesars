@@ -5,13 +5,15 @@
     <meta name="description" content="Email Spammer testing website.">
     <meta name="theme-color" content="#000000">
     <title>Email Spammer</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/toggleAccountForm.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/toggleSpamForm.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/themetoggle.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/menubar.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menubar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/themetoggle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/toggleSpamForm.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/toggleAccountForm.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/notificationContainer.css') }}">
 </head>
 <body class="light-mode">
+    <div id="notificationContainer"></div>
     <button id="menuToggle">Menu</button>
     <div id="menu" style="display: none;">
         <button id="themeToggle">Toggle Dark Mode</button>

@@ -42,7 +42,7 @@ def send_spam():
     # Mark the email as no longer being processed
     processing_emails[email] = False
     # Return a success message along with the script output
-    return jsonify({"status": "success", "message": f"Email {email} spamming completed.\nTimes: {times}"}), 200
+    return jsonify({"status": "success", "message": f"Email {email} spamming completed. Emails Sent: {times}"}), 200
 
 @app.route('/create_account', methods=['POST'])
 def create_account():

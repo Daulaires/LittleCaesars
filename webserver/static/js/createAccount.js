@@ -1,10 +1,3 @@
-/**
- * This was made to test the functionality of the website https://www.littlecaesars.com/en-us/
- * This was made for educational purposes only.
- * Author: @Daulaires / https://www.github.com/Daulaires/LittleCaesarsEmailSpammer
- * Date: 2024-05-02
- */
-
 document.getElementById('createAccountForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the form from submitting normally
 
@@ -32,15 +25,33 @@ document.getElementById('createAccountForm').addEventListener('submit', function
         headers: headers,
         body: requestBody
     })
-   .then(response => response.json()) // Parse the response as JSON
-   .then(data => {
-        if (data.status === 'success') {
-            alert(data.message); // Show a success message
-        } else {
-            alert('An error occurred. Please try again.'); // Show an error message
-        }
+    .then(response => response.json()) // Parse the response as JSON
+    .then(data => {
+        const notificationContainer = document.getElementById('notificationContainer');
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        notification.textContent = data.status === 'success' ? data.message : 'An error occurred. Please try again.';
+        notificationContainer.appendChild(notification);
+        notification.classList.add('show');
+
+        // Automatically hide the notification after 3 seconds
+        setTimeout(() => {
+            notification.classList.remove('show');
+            notificationContainer.removeChild(notification);
+        }, 3000);
     })
-   .catch(error => {
-        alert('An error occurred. Please try again.'); // Show an error message
+    .catch(error => {
+        const notificationContainer = document.getElementById('notificationContainer');
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        notification.textContent = 'An error occurred. Please try again.';
+        notificationContainer.appendChild(notification);
+        notification.classList.add('show');
+
+        // Automatically hide the notification after 3 seconds
+        setTimeout(() => {
+            notification.classList.remove('show');
+            notificationContainer.removeChild(notification);
+        }, 3000);
     });
 });
