@@ -103,4 +103,4 @@ def create_account():
     return jsonify({"status": "success", "message": f"Account created for email: {email}."}), 200
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0",port=999,debug=True)

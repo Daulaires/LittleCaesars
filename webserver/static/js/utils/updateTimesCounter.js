@@ -1,6 +1,6 @@
 
 // get the globalTimesCounter from the .json tile in webserver\global_spam_count.json
-GetGlobalTimesCounter = function() {
+GetGlobalTimesCounter = () => {
     fetch('/get_global_spam_count')
     .then(response => response.json())
     .then(data => {
@@ -10,6 +10,5 @@ GetGlobalTimesCounter = function() {
     });
 }
 
-// get the globalTimesCounter from the .json tile in webserver\global_spam_count.json
 GetGlobalTimesCounter();
 

@@ -18,7 +18,8 @@ document.getElementById('spamForm').addEventListener('submit', function(event) {
     const headers = {
         'Content-Type': 'application/json'
     };
-
+    GetGlobalTimesCounter();
+    showNotification('Sending spam to ' + email + ' ' + times + ' times...');
     // Send the POST request to the Flask app
     fetch(url, {
         method: 'POST',

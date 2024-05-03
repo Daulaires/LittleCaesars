@@ -16,7 +16,7 @@
 <body class="light-mode">
     <div id="globalTimesCounter"></div>
     <div id="notificationContainer"></div>
-    <button id="menuToggle">Menu</button>
+    <button id="menuToggle" aria-label="Toggle Menu">Menu</button>
     <div id="menu" style="display: none;">
         <button id="themeToggle">Toggle Dark Mode</button>
         <button id="toggleCreateAccountForm">Hide Create Account Form</button>
@@ -44,9 +44,9 @@
     <script src="{{ url_for('static', filename='js/spamForm.js') }}"></script>
     <script src="{{ url_for('static', filename='js/hideSpamForm.js') }}"></script>
     <script src="{{ url_for('static', filename='js/createAccount.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/hideAccountForm.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/updateTimesCounter.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/utils/notification.js') }}"></script>
     <script src="{{ url_for('static', filename='js/toggleDarkmode.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/hideAccountForm.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/utils/updateTimesCounter.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/utils/notification.js') }}"></script>
 </body>
 </html>

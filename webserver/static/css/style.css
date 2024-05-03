@@ -7,6 +7,28 @@
     gap: 5px;
 }
 
+@media (max-width: 600px) {
+    .container {
+        width: 95%; /* Adjust width for smaller screens */
+    }
+
+    form {
+        width: 50%; /* Adjust width for smaller screens */
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    /* make the body smaller */
+    body {
+        padding: 10px;
+    }
+
+    /* hide one of the forms */
+    form:nth-child(2) {
+        display: none;
+    }
+
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #e0e0e0; /* Slightly darker gray */
