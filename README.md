@@ -1,5 +1,5 @@
 # LittleCaesars
-- pip -r requirements.txt to install the needed things or just `pip install selenium`, create an account under the email you want to spam, then logout, and that is it.
+- pip -r requirements.txt to install the needed things and create an account under the email you want to spam, then logout, and that is it. As long there is an account created on this website it will then abuse the reset password.
 - have google chrome installed and I believe it should work
 - if not troubleshoot and do this ^^^
 ----
