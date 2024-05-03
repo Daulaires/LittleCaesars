@@ -28,11 +28,11 @@ document.getElementById('spamForm').addEventListener('submit', function(event) {
     .then(response => response.json()) // Parse the response as JSON
     .then(data => {
         // Use the showNotification function to display a success message
-        showNotification(data.status === 'success' ? data.message : 'An error occurred. Please try again.');
+        showNotification(data.status === 'success' ? data.message : 'Please wait for the previous request to complete.');
     })
     .catch(error => {
         // Use the showNotification function to display an error message
-        showNotification('An error occurred. Please try again.');
+        showNotification('Please wait for the previous request to complete.');
     });
 });
     

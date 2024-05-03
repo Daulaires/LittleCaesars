@@ -1,0 +1,10 @@
+#globalTimesCounter {
+    position: fixed;
+    top: 50px; /* Adjust this value as needed to position it under the menu button */
+    /* put in the middle top of the screen */
+    left: 46%;
+    z-index: 1000;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+}

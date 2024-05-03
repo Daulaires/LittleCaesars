@@ -4,6 +4,7 @@
 # Author: @Daulaires / https://www.github.com/Daulaires/LittleCaesarsEmailSpammer
 # Date: 2024-05-02
 # 
+import json
 import os
 import tempfile
 from flask import Flask, jsonify, render_template, request, abort
@@ -13,6 +14,17 @@ app = Flask(__name__, template_folder='templates')
 processing_emails = {}
 accounts = {}
 
+# include the global_spam_count.json file
+global_spam_count_file = 'static/data/global_spam_count.json'
+
+# make it a app.route
+@app.route('/get_global_spam_count', methods=['GET'])
+def get_global_spam_count():
+    logging.info("Received GET request to get global spam count")
+    with open(global_spam_count_file, 'r') as file:
+        global_spam_count = json.load(file)
+    return jsonify(global_spam_count), 200
+
 @app.route('/')
 def index():
     logging.info("Index page accessed")
@@ -21,27 +33,53 @@ def index():
 @app.route('/send_spam', methods=['POST'])
 def send_spam():
     logging.info("Received POST request to send spam")
-    # Extract data from the request
     data = request.get_json()
     email = data.get('email')
     times = data.get('times')
-    # Check if the email is already being processed
+
     if email in processing_emails and processing_emails[email]:
         logging.info(f"Skipping email {email} as it's already being processed.")
         return jsonify({"status": "skip", "message": f"Email {email} is already being processed."}), 200
-    # Mark the email as being processed
+
     processing_emails[email] = True
     logging.info(f"Processing email: {email}, times: {times}")
-    # Create a temporary file to store the output of the script
+
+    # Check if the global spam count file exists and create it if not
+    global_spam_count_file = 'static/data/global_spam_count.json'
+    if not os.path.exists(global_spam_count_file):
+        try:
+            with open(global_spam_count_file, 'x') as file:
+                file.write(json.dumps({"total_spam_count": 0}))
+        except FileExistsError:
+            # Handle the rare case where the file was created by another process after the check
+            pass
+
+    # Load the current global spam count
+    with open(global_spam_count_file, 'r') as file:
+        global_spam_count = json.load(file)
+
+    # Load the current global spam count
+    with open(global_spam_count_file, 'r') as file:
+        global_spam_count = json.load(file)
+
+    # Convert times to an integer before incrementing the global spam count
+    times = int(times) # Convert times to an integer
+
+    # Increment the global spam count
+    global_spam_count['total_spam_count'] += times
+
+    # Save the updated global spam count
+    with open(global_spam_count_file, 'w') as file:
+        json.dump(global_spam_count, file, indent=4)
+
     temp_file = tempfile.NamedTemporaryFile(delete=False)
     temp_file.close()
-    # Run the python script and redirect its output to the temporary file
+
     os.system(f'python static/python/index.py spam {email} {times} > {temp_file.name}')
-    # Log the completion of the spamming process
+
     logging.info(f"Completed processing email: {email}")
-    # Mark the email as no longer being processed
     processing_emails[email] = False
-    # Return a success message along with the script output
+
     return jsonify({"status": "success", "message": f"Email {email} spamming completed. Emails Sent: {times}"}), 200
 
 @app.route('/create_account', methods=['POST'])

@@ -10,9 +10,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/themetoggle.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/toggleSpamForm.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/toggleAccountForm.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/globalTimesCounter.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/notificationContainer.css') }}">
+
 </head>
 <body class="light-mode">
+    <div id="globalTimesCounter">0</div>
     <div id="notificationContainer"></div>
     <button id="menuToggle">Menu</button>
     <div id="menu" style="display: none;">
@@ -43,6 +46,7 @@
     <script src="{{ url_for('static', filename='js/hideSpamForm.js') }}"></script>
     <script src="{{ url_for('static', filename='js/createAccount.js') }}"></script>
     <script src="{{ url_for('static', filename='js/hideAccountForm.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/updateTimesCounter.js') }}"></script>
     <script src="{{ url_for('static', filename='js/utils/notification.js') }}"></script>
     <script src="{{ url_for('static', filename='js/toggleDarkmode.js') }}"></script>
 </body>
