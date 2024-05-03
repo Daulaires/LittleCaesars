@@ -34,11 +34,14 @@ document.getElementById('createAccountForm').addEventListener('submit', function
         notificationContainer.appendChild(notification);
         notification.classList.add('show');
 
+        setTimeout(() => {
+            notification.classList.add('fadeOut'); // Trigger the fade-out animation
+        }, 5000);
         // Automatically hide the notification after 3 seconds
         setTimeout(() => {
             notification.classList.remove('show');
             notificationContainer.removeChild(notification);
-        }, 3000);
+        }, 10000);
     })
     .catch(error => {
         const notificationContainer = document.getElementById('notificationContainer');
@@ -46,12 +49,15 @@ document.getElementById('createAccountForm').addEventListener('submit', function
         notification.className = 'notification';
         notification.textContent = 'An error occurred. Please try again.';
         notificationContainer.appendChild(notification);
-        notification.classList.add('show');
+        notification.classList.add('hide');
 
+        setTimeout(() => {
+            notification.classList.add('fadeOut'); // Trigger the fade-out animation
+        }, 5000);
         // Automatically hide the notification after 3 seconds
         setTimeout(() => {
             notification.classList.remove('show');
             notificationContainer.removeChild(notification);
-        }, 3000);
+        }, 10000);
     });
 });
