@@ -30,6 +30,10 @@ form {
     animation: fadeIn 0.5s ease-in-out forwards;
 }
 
+form.hide {
+    animation: fadeOut 0.5s ease-in-out forwards;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -76,10 +80,7 @@ button[type="submit"] {
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s ease;
-    padding: 15px 30px; /* Adjusts the padding to increase the button's width */
 }
-
-
 
 button[type="submit"]:hover,button[type="submit"]:focus  {
     animation: colorChange 2s infinite;

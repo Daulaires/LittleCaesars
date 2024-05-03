@@ -16,11 +16,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     toggleCreateAccountFormButton.addEventListener('click', function() {
         if (createAccountForm.style.display === 'none') {
+            // remove hide
+            createAccountForm.classList.remove('hide');
             createAccountForm.style.display = 'block';
         } else {
-            createAccountForm.style.display = 'none';
+            setTimeout(function() {
+                createAccountForm.classList.add('hide');
+            }, 500);
+            setTimeout(function() {
+                createAccountForm.style.display = 'none';
+            }, 1000);
         }
         // Update the button text after toggling the form's visibility
-        updateButtonText();
+        setTimeout(function() {
+            updateButtonText();
+        }, 1000);
     });
 });

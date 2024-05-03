@@ -18,6 +18,16 @@ body.dark-mode form {
     transition: background-color 1s ease, color 1s ease;
 }
 
+body.dark-mode label {
+    color: #ffffff; /* Light text for dark background */
+}
+
+body.dark-mode button {
+    background-color: #000000; /* Dark purple */
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
 #themeToggle {
     position: absolute;
     top: 10px;
