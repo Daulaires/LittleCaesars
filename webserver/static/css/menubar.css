@@ -1,0 +1,18 @@
+#menuToggle{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #800080; /* Dark purple */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#menu {
+    /* use display: none to hide the menu by default */
+    display: none;
+}
