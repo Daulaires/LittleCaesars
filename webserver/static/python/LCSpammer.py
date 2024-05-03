@@ -26,7 +26,6 @@ sys.stderr = logging.StreamHandler(sys.stderr)
 
 # Initialize counters
 successful_clicks = 0
-forgot_password_clicks = 0
 total_attempts = 0
 
 def test(driver):
@@ -43,7 +42,7 @@ def test(driver):
     
 def create_account(driver, email, password):
     try:
-        
+
         # Wait for the Create Account link to be present
         create_account_link = WebDriverWait(driver, 30).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, 'a[data-testid="login-form__create-account-link"]'))
@@ -87,11 +86,9 @@ def create_account(driver, email, password):
         logging.error("\033[91mCreate Account link or form elements not found.\033[0m")
 
 def click_forgot_password_link(driver):
-    global forgot_password_clicks
     try:
         forgot_password_link = driver.find_element(By.CSS_SELECTOR, 'a[data-testid="login-form__forgot-password-link"]')
         forgot_password_link.click()
-        forgot_password_clicks += 1
         logging.info("\033[92mClicked on Forgot Password link.\033[0m")
     except NoSuchElementException:
         logging.error("\033[91mForgot Password link not found.\033[0m")
@@ -167,7 +164,6 @@ def Main(command, total_attempts):
     logging.info(f"Statistics:")
     logging.info(f"Total Attempts: {total_attempts}")
     logging.info(f"Successful Clicks: {successful_clicks}")
-    logging.info(f"Forgot Password Clicks: {forgot_password_clicks}")
 
     driver.quit()
 

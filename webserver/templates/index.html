@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Email Spammer testing website.">
-    <meta name="theme-color" content="#000000">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0">
+    <meta charset="UTF-8" name="description" content="Email Spammer testing website.">
+    <meta charset="UTF-8" name="theme-color" content="#000000">
     <title>Email Spammer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/menubar.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/themetoggle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/toggleSpamForm.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/emailSpamCounter.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/toggleAccountForm.css') }}">
@@ -40,13 +40,15 @@
             <button type="submit">Create Account</button>
         </form>
     </div>
-    <script src="{{ url_for('static', filename='js/menu/menubar.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/forms/spamForm.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/forms/hideSpamForm.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/forms/createAccount.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/theme/toggleDarkmode.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/forms/hideAccountForm.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/utils/updateTimesCounter.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/utils/notification.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/menu/menu.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/forms/spamForm.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/utils/notification.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/forms/createAccount.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/utils/updateTimesCounter.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/menu/elements/hideSpamForm.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/menu/elements/theme/Darkmode.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/menu/elements/hideAccountForm.js') }}"></script>
+
 </body>
+
 </html>
