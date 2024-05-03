@@ -6,14 +6,16 @@
     <meta name="theme-color" content="#000000">
     <title>Email Spammer</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/toggleAccountForm.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/toggleSpamForm.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/themetoggle.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/menubar.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body class="dark-mode">
+<body class="light-mode">
     <button id="menuToggle">Menu</button>
     <div id="menu" style="display: none;">
         <button id="themeToggle">Toggle Dark Mode</button>
+        <button id="toggleSpamForm">Hide Spam Form</button>
         <button id="toggleCreateAccountForm">Hide Create Account Form</button>
     </div>
     <div class="container">
@@ -36,6 +38,7 @@
     </div>
     <script src="{{ url_for('static', filename='js/spamForm.js') }}"></script>
     <script src="{{ url_for('static', filename='js/createAccount.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/hideSpamForm.js') }}"></script>
     <script src="{{ url_for('static', filename='js/hideAccountForm.js') }}"></script>
     <script src="{{ url_for('static', filename='js/toggleDarkmode.js') }}"></script>
     <script src="{{ url_for('static', filename='js/menubar.js') }}"></script>

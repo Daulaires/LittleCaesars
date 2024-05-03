@@ -1,6 +1,6 @@
-#toggleCreateAccountForm {
+#toggleSpamForm {
     position: absolute;
-    top: 50px;
+    top: 90px;
     left: 10px;
     background-color: #000000; /* Dark purple */
     color: white;
@@ -12,6 +12,6 @@
     transition: background-color 0.3s ease;
 }
 
-#toggleCreateAccountForm:hover {
+#toggleSpamForm:hover {
     background-color: #6a5acd; /* Slightly lighter purple */
 }

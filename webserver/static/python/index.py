@@ -123,7 +123,6 @@ args = parser.parse_args()
 # Setup Chrome options
 options = webdriver.ChromeOptions()
 
-options.add_argument("--headless")
 # Increase the browser window size
 options.add_argument("--window-size=1920,1080")
 # Disable images

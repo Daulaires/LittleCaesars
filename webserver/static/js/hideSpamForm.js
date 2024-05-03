@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const toggleCreateAccountFormButton = document.getElementById('toggleCreateAccountForm');
-    const createAccountForm = document.getElementById('createAccountForm');
+    const toggleCreateAccountFormButton = document.getElementById('toggleSpamForm');
+    const createAccountForm = document.getElementById('spamForm');
 
     // Function to update the button text based on the current visibility of the form
     function updateButtonText() {
         if (createAccountForm.style.display === 'none') {
-            toggleCreateAccountFormButton.textContent = 'Show Create Account';
+            toggleCreateAccountFormButton.textContent = 'Show Spam Form';
         } else {
-            toggleCreateAccountFormButton.textContent = 'Hide Create Account';
+            toggleCreateAccountFormButton.textContent = 'Hide Spam Form';
         }
     }
 

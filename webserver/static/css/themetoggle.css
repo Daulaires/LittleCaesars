@@ -5,19 +5,19 @@ body.light-mode {
 
 body.dark-mode {
     background-color: #333; /* Dark gray */
-    color: #000000; /* Light text for dark background */
+    color: #e0e0e0; /* Light text for dark background */
 }
 
 body.dark-mode form {
     background-color: #0d0d0d; /* Dark gray */
-    color: #800080; /* Light text for dark background */
+    color: #ffffff; /* Light text for dark background */
 }
 
 #themeToggle {
     position: absolute;
     top: 10px;
     left: 10px;
-    background-color: #800080; /* Dark purple */
+    background-color: #000000; /* Dark purple */
     color: white;
     padding: 10px 15px;
     border: none;
