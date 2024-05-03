@@ -27,31 +27,12 @@ document.getElementById('spamForm').addEventListener('submit', function(event) {
     })
     .then(response => response.json()) // Parse the response as JSON
     .then(data => {
-        const notificationContainer = document.getElementById('notificationContainer');
-        const notification = document.createElement('div');
-        notification.className = 'notification';
-        notification.textContent = data.status === 'success' ? data.message : 'An error occurred. Please try again.';
-        notificationContainer.appendChild(notification);
-        notification.classList.add('show');
-
-        // Automatically hide the notification after 3 seconds
-        setTimeout(() => {
-            notification.classList.remove('show');
-            notificationContainer.removeChild(notification);
-        }, 3000);
+        // Use the showNotification function to display a success message
+        showNotification(data.status === 'success' ? data.message : 'An error occurred. Please try again.');
     })
     .catch(error => {
-        const notificationContainer = document.getElementById('notificationContainer');
-        const notification = document.createElement('div');
-        notification.className = 'notification';
-        notification.textContent = 'An error occurred. Please try again.';
-        notificationContainer.appendChild(notification);
-        notification.classList.add('show');
-
-        // Automatically hide the notification after 3 seconds
-        setTimeout(() => {
-            notification.classList.remove('show');
-            notificationContainer.removeChild(notification);
-        }, 3000);
+        // Use the showNotification function to display an error message
+        showNotification('An error occurred. Please try again.');
     });
 });
+    
