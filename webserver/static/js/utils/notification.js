@@ -6,7 +6,7 @@ showNotification = (message) => {
     notificationContainer.appendChild(notification);
     notification.classList.add('show');
     setTimeout(() => {
-        notification.classList.add('fadeOut'); // Trigger the fade-out animation
+        notification.classList.add('hide'); // Trigger the fade-out animation
     }, 5000);
     // Automatically hide the notification after 3 seconds
     setTimeout(() => {

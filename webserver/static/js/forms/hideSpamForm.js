@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    
     const toggleCreateAccountFormButton = document.getElementById('toggleSpamForm');
     const createAccountForm = document.getElementById('spamForm');
 
@@ -32,4 +33,5 @@ document.addEventListener('DOMContentLoaded', function() {
             updateButtonText();
         }, 1000);
     });
+
 });

@@ -36,6 +36,6 @@
     display: block;
 }
 
-.notification.fadeOut {
+.notification.hide {
     animation: fadeOut 0.5s ease-in-out forwards; /* Fade out animation */
 }
