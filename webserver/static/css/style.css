@@ -9,7 +9,7 @@
 
 @media (max-width: 600px) {
     .container {
-        width: 95%; /* Adjust width for smaller screens */
+        width: 80%; /* Adjust width for smaller screens */
     }
 
     form {

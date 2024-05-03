@@ -1,6 +1,7 @@
 #toggleSpamForm {
     position: absolute;
-    top: 90px;
+
+    top: 50px;
     left: 10px;
     background-color: #000000; /* Dark purple */
     color: white;

@@ -7,6 +7,7 @@
 
 import sys
 import logging
+import threading
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -42,6 +43,7 @@ def test(driver):
     
 def create_account(driver, email, password):
     try:
+        
         # Wait for the Create Account link to be present
         create_account_link = WebDriverWait(driver, 30).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, 'a[data-testid="login-form__create-account-link"]'))
@@ -76,9 +78,10 @@ def create_account(driver, email, password):
         confirm_password_input.clear()
         confirm_password_input.send_keys(password)
         terms_checkbox.click()
-        time.sleep(1)
+        # Some sleep to prevent skipping over the click.
+        time.sleep(1.2)
         continue_button.click()
-        time.sleep(2)
+        time.sleep(1.5)
         logging.info("\033[92mRedirected to the create account page and elements are ready.\033[0m")
     except NoSuchElementException:
         logging.error("\033[91mCreate Account link or form elements not found.\033[0m")
@@ -138,31 +141,44 @@ driver = webdriver.Chrome(options=options)
 # Navigate to the page
 driver.get('https://littlecaesars.com/en-us/login/')
 
-# Handle different commands based on the parsed arguments
-if args.command == 'spam':
-    # Implement the spam functionality here
-    for _ in range(args.times + 2):
-        total_attempts += 1
-        if test(driver):
-            enter_email(driver, args.email)
-            time.sleep(1)
-        else:
-            click_forgot_password_link(driver)
-            time.sleep(1)
-            enter_email(driver, args.email)
-            time.sleep(1)
-elif args.command == 'create_account':
-    # Implement the create account functionality here
-    create_account(driver, args.email, args.password)
-else:
-    logging.error("Invalid command. Use 'spam' or 'create_account'.")
-    sys.exit(1)
+def Main(command, total_attempts):
+    # Handle different commands based on the parsed arguments
+    if command == 'spam':
+        # Implement the spam functionality here
+        for _ in range(args.times + 2):
+            total_attempts += 1
+            if test(driver):
+                enter_email(driver, args.email)
+                time.sleep(1)
+            else:
+                click_forgot_password_link(driver)
+                time.sleep(1)
+                enter_email(driver, args.email)
+                time.sleep(1)
+    elif args.command == 'create_account':
+        # Implement the create account functionality here
+        create_account(driver, args.email, args.password)
+    else:
+        logging.error("Invalid command. Use 'spam' or 'create_account'.")
+        sys.exit(1)
+    
+    # Display statistics
+    logging.info(f"Website: {driver.current_url}")
+    logging.info(f"Statistics:")
+    logging.info(f"Total Attempts: {total_attempts}")
+    logging.info(f"Successful Clicks: {successful_clicks}")
+    logging.info(f"Forgot Password Clicks: {forgot_password_clicks}")
 
-# Display statistics
-logging.info(f"Website: {driver.current_url}")
-logging.info(f"Statistics:")
-logging.info(f"Total Attempts: {total_attempts}")
-logging.info(f"Successful Clicks: {successful_clicks}")
-logging.info(f"Forgot Password Clicks: {forgot_password_clicks}")
+    driver.quit()
 
-driver.quit()
+if __name__ == '__main__':
+    t1 = threading.Thread(target=Main,name="t1",args=(args.command,total_attempts))
+    
+    # To start a thread, we use the start() method of the Thread class.
+    t1.start()
+
+    # In order to stop the execution of the current program until a thread is complete, we use the join() method.
+    t1.join()
+
+
+
