@@ -1,17 +1,24 @@
-document.getElementById('spamForm').addEventListener('submit', function(event) {
+/**
+ * This was made to test the functionality of the website https://www.littlecaesars.com/en-us/
+ * This was made for educational purposes only.
+ * Author: @Daulaires / https://www.github.com/Daulaires/LittleCaesarsEmailSpammer
+ * Date: 2024-05-02
+ */
+
+document.getElementById('createAccountForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the form from submitting normally
 
     const formData = new FormData(this);
     const email = formData.get('email');
-    const times = formData.get('times');
+    const password = formData.get('password');
 
     // Construct the URL for the POST request
-    const url = '/send_spam'; // Assuming the Flask app is running on the same domain
+    const url = '/create_account'; // Assuming the Flask app endpoint for account creation
 
     // Prepare the request body
     const requestBody = JSON.stringify({
         email: email,
-        times: times
+        password: password // Include 'password' if it's relevant for account creation
     });
 
     // Set the request headers
@@ -25,15 +32,15 @@ document.getElementById('spamForm').addEventListener('submit', function(event) {
         headers: headers,
         body: requestBody
     })
-  .then(response => response.json()) // Parse the response as JSON
-  .then(data => {
+   .then(response => response.json()) // Parse the response as JSON
+   .then(data => {
         if (data.status === 'success') {
             alert(data.message); // Show a success message
         } else {
             alert('An error occurred. Please try again.'); // Show an error message
         }
     })
-  .catch(error => {
+   .catch(error => {
         alert('An error occurred. Please try again.'); // Show an error message
     });
 });
