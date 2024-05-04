@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0">
+    <meta charset="UTF-8" name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0">
     <meta charset="UTF-8" name="description" content="Email Spammer testing website.">
     <meta charset="UTF-8" name="theme-color" content="#000000">
     <title>Email Spammer</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/title.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/toggleSpamForm.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/emailSpamCounter.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/toggleAccountForm.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/notificationContainer.css') }}">
 </head>
+
 <body class="light-mode">
     <div id="emailSpamCounter"></div>
     <div id="notificationContainer"></div>
@@ -48,7 +52,6 @@
     <script defer src="{{ url_for('static', filename='js/menu/elements/hideSpamForm.js') }}"></script>
     <script defer src="{{ url_for('static', filename='js/menu/elements/theme/Darkmode.js') }}"></script>
     <script defer src="{{ url_for('static', filename='js/menu/elements/hideAccountForm.js') }}"></script>
-
 </body>
 
 </html>

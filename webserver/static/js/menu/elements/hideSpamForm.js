@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
-    
+document.addEventListener('DOMContentLoaded', function () {
+
     const toggleCreateAccountFormButton = document.getElementById('toggleSpamForm');
     const createAccountForm = document.getElementById('spamForm');
 
@@ -15,21 +15,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial call to set the correct text on page load
     updateButtonText();
 
-    toggleCreateAccountFormButton.addEventListener('click', function() {
+    toggleCreateAccountFormButton.addEventListener('click', function () {
         if (createAccountForm.style.display === 'none') {
             // remove hide
             createAccountForm.classList.remove('hide');
             createAccountForm.style.display = 'block';
         } else {
-            setTimeout(function() {
+            setTimeout(function () {
                 createAccountForm.classList.add('hide');
             }, 500);
-            setTimeout(function() {
+            setTimeout(function () {
                 createAccountForm.style.display = 'none';
             }, 1000);
         }
         // Update the button text after toggling the form's visibility
-        setTimeout(function() {
+        setTimeout(function () {
             updateButtonText();
         }, 1000);
     });

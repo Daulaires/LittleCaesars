@@ -6,6 +6,7 @@
 # 
 import json
 import os
+import subprocess
 import tempfile
 from flask import Flask, jsonify, render_template, request, abort
 import logging
@@ -59,15 +60,11 @@ def send_spam():
     with open(global_spam_count_file, 'r') as file:
         global_spam_count = json.load(file)
     
-    # Load the current global spam count
-    with open(global_spam_count_file, 'r') as file:
-        global_spam_count = json.load(file)
-    
     # Convert times to an integer before incrementing the global spam count
     times = int(times) # Convert times to an integer
     
     # Increment the global spam count
-    global_spam_count['total_spam_count'] += times
+    global_spam_count['total_spam_count'] += times * 2
     
     # Save the updated global spam count
     with open(global_spam_count_file, 'w') as file:
@@ -76,7 +73,18 @@ def send_spam():
     temp_file = tempfile.NamedTemporaryFile(delete=False)
     temp_file.close()
     
-    os.system(f'python static/python/LCSpammer.py spam {email} {times} > {temp_file.name}')
+    # Create a temporary file for each spammer script
+    temp_file_LC = tempfile.NamedTemporaryFile(delete=False)
+    temp_file_WSS = tempfile.NamedTemporaryFile(delete=False)
+    
+    # Start processes for each spammer script
+    process_LC = subprocess.Popen(['python', 'static/python/LCSpammer.py', 'spam', email, str(times)], stdout=open(temp_file_LC.name, 'w'))
+    process_WSS = subprocess.Popen(['python', 'static/python/WSSpammer.py', 'spam', email, str(times)], stdout=open(temp_file_WSS.name, 'w'))
+    
+    # Wait for both processes to complete
+    process_LC.wait()
+    process_WSS.wait()
+
     os.system(f'ipconfig /flushdns')
     
     logging.info(f"Completed processing email: {email}")
@@ -102,6 +110,8 @@ def create_account():
     if email in accounts:
         abort(400, description=f"Email {email} is already registered.")
     os.system(f'python static/python/LCSpammer.py create_account {email} {password}')
+    #create_account, args.email, args.firstname, args.lastname, args.password
+    os.system(f'python static/python/WSSpammer.py create_account {email} Adfsdf Sdfsdf {password} 1')
     
     # For demonstration, we'll just add it to a dictionary
     accounts[email] = {"password": password}  # Storing password in plain text is insecure in real applications

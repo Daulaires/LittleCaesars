@@ -1,29 +1,41 @@
-body, body.light-mode, body.dark-mode, #themeToggle {
+body,
+body.light-mode,
+body.dark-mode,
+#themeToggle {
     transition: background-color 1s ease, color 1s ease;
 }
 
 body.light-mode {
-    background-color: #e0e0e0; /* Light gray */
-    color: #000000; /* Dark text for light background */
+    background-color: #e0e0e0;
+    /* Light gray */
+    color: #000000;
+    /* Dark text for light background */
 }
 
 body.dark-mode {
-    background-color: #333; /* Dark gray */
-    color: #e0e0e0; /* Light text for dark background */
+    background-color: #333;
+    /* Dark gray */
+    color: #e0e0e0;
+    /* Light text for dark background */
 }
 
 body.dark-mode form {
-    background-color: #000000; /* Dark gray */
-    color: #ffffff; /* Light text for dark background */
+    box-shadow: 0 0px 6px #ffffff;
+    background-color: #000000;
+    /* Dark gray */
+    color: #ffffff;
+    /* Light text for dark background */
     transition: background-color 1s ease, color 1s ease;
 }
 
 body.dark-mode label {
-    color: #ffffff; /* Light text for dark background */
+    color: #ffffff;
+    /* Light text for dark background */
 }
 
 body.dark-mode button {
-    background-color: #000000; /* Dark purple */
+    background-color: #000000;
+    /* Dark purple */
     color: white;
     transition: background-color 0.3s ease;
 }
@@ -32,7 +44,8 @@ body.dark-mode button {
     position: absolute;
     top: 10px;
     left: 10px;
-    background-color: #000000; /* Dark purple */
+    background-color: #000000;
+    /* Dark purple */
     color: white;
     padding: 10px 15px;
     border: none;
@@ -42,12 +55,21 @@ body.dark-mode button {
     transition: background-color 0.3s ease;
 }
 
-#themeToggle:hover, #themeToggle:focus {
+#themeToggle:hover,
+#themeToggle:focus {
     animation: colorChange 2s infinite;
 }
 
 @keyframes colorChange {
-    0% { background-color: #000000; }
-    50% { background-color: #6a5acd; }
-    100% { background-color: #000000; }
+    0% {
+        background-color: #000000;
+    }
+
+    50% {
+        background-color: #6a5acd;
+    }
+
+    100% {
+        background-color: #000000;
+    }
 }

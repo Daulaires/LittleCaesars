@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const menuToggleButton = document.getElementById('menuToggle');
     const menu = document.getElementById('menu');
 
@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initial call to set the correct text on page load
     updateButtonText();
-    
-    menuToggleButton.addEventListener('click', function() {
+
+    menuToggleButton.addEventListener('click', function () {
         if (menu.style.display === 'none') {
             menu.style.display = 'block';
         } else {

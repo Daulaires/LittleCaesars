@@ -123,12 +123,16 @@ args = parser.parse_args()
 options = webdriver.ChromeOptions()
 
 options.add_argument("--headless")
+
 # Increase the browser window size
 options.add_argument("--window-size=1920,1080")
+
 # Disable images
 options.add_argument("--blink-settings=imagesEnabled=false")
+
 # Use a specific user agent
 options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3")
+
 # Enable JavaScript
 options.add_argument("--enable-javascript")
 
@@ -138,11 +142,16 @@ driver = webdriver.Chrome(options=options)
 # Navigate to the page
 driver.get('https://littlecaesars.com/en-us/login/')
 
+# this is just to compensate the times failed.
+timesOffset = 4
+
 def Main(command, total_attempts):
+    
     # Handle different commands based on the parsed arguments
     if command == 'spam':
+    
         # Implement the spam functionality here
-        for _ in range(args.times + 2):
+        for _ in range(args.times + timesOffset):
             total_attempts += 1
             if test(driver):
                 enter_email(driver, args.email)
@@ -152,22 +161,26 @@ def Main(command, total_attempts):
                 time.sleep(1)
                 enter_email(driver, args.email)
                 time.sleep(1)
+    
     elif args.command == 'create_account':
+    
         # Implement the create account functionality here
         create_account(driver, args.email, args.password)
+        
     else:
         logging.error("Invalid command. Use 'spam' or 'create_account'.")
         sys.exit(1)
     
     # Display statistics
-    logging.info(f"Website: {driver.current_url}")
-    logging.info(f"Statistics:")
-    logging.info(f"Total Attempts: {total_attempts}")
-    logging.info(f"Successful Clicks: {successful_clicks}")
+    # logging.info(f"Website: {driver.current_url}")
+    # logging.info(f"Statistics:")
+    # logging.info(f"Total Attempts: {total_attempts}")
+    # logging.info(f"Successful Clicks: {successful_clicks}")
 
     driver.quit()
 
 if __name__ == '__main__':
+    # Define the thread to be ran. DOES NOT MAKE THE DRIVER ANY FASTER
     t1 = threading.Thread(target=Main,name="t1",args=(args.command,total_attempts))
     
     # To start a thread, we use the start() method of the Thread class.

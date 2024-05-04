@@ -1,28 +1,26 @@
 .container {
-    display: flex; /* Enables Flexbox layout */
-    justify-content: space-between; /* Adds space between the forms */
-    flex-wrap: wrap; /* Allows the forms to wrap onto the next line if there isn't enough space */
-    max-width: 800px; /* Adjust based on your preference */
-    margin: 0 auto; /* Centers the container */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
     gap: 5px;
 }
 
 @media (max-width: 600px) {
     .container {
-        width: 80%; /* Adjust width for smaller screens */
+        width: 80%;
     }
 
     form {
-        width: 50%; /* Adjust width for smaller screens */
-        padding: 10px; /* Adjust padding for smaller screens */
+        width: 50%;
+        padding: 10px;
     }
 
-    /* make the body smaller */
     body {
         padding: 10px;
     }
 
-    /* hide one of the forms */
     form:nth-child(2) {
         display: none;
     }
@@ -31,7 +29,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #e0e0e0; /* Slightly darker gray */
+    background-color: #e0e0e0;
     margin: 0;
     padding: 0;
     display: flex;
@@ -44,10 +42,10 @@ body {
 form {
     display: flex;
     flex-direction: column;
-    background-color: #f5f5f5; /* Light gray */
+    background-color: #f5f5f5;
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px #000000;
     max-width: 400px;
     animation: fadeIn 0.5s ease-in-out forwards;
 }
@@ -57,8 +55,15 @@ form.hide {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 label {
@@ -67,12 +72,13 @@ label {
     font-weight: bold;
 }
 
-input[type="email"], input[type="number"]{
+input[type="email"],
+input[type="number"] {
     width: 100%;
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 5px;
-    border: 1px solid #ddd; /* Light grey */
+    border: 1px solid #ddd;
     outline: none;
     transition: border-color 0.3s ease;
     box-sizing: border-box;
@@ -83,18 +89,20 @@ input[type="string"] {
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 5px;
-    border: 1px solid #ddd; /* Light grey */
+    border: 1px solid #ddd;
     outline: none;
     transition: border-color 0.3s ease;
     box-sizing: border-box;
 }
 
-input[type="email"]:focus, input[type="number"]:focus, input[type="string"]:focus {
-    border-color: #000000; /* Dark purple */
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="string"]:focus {
+    border-color: #000000;
 }
 
 button[type="submit"] {
-    background-color: #000000; /* Dark purple */
+    background-color: #000000;
     color: white;
     padding: 15px 25px;
     border: none;
@@ -104,12 +112,21 @@ button[type="submit"] {
     transition: background-color 0.3s ease;
 }
 
-button[type="submit"]:hover,button[type="submit"]:focus  {
+button[type="submit"]:hover,
+button[type="submit"]:focus {
     animation: colorChange 2s infinite;
 }
 
 @keyframes colorChange {
-    0% { background-color: #000000; }
-    50% { background-color: #6a5acd; }
-    100% { background-color: #000000; }
+    0% {
+        background-color: #000000;
+    }
+
+    50% {
+        background-color: #6a5acd;
+    }
+
+    100% {
+        background-color: #000000;
+    }
 }

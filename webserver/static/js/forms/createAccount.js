@@ -1,4 +1,4 @@
-document.getElementById('createAccountForm').addEventListener('submit', function(event) {
+document.getElementById('createAccountForm').addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent the form from submitting normally
 
     const formData = new FormData(this);
@@ -25,8 +25,8 @@ document.getElementById('createAccountForm').addEventListener('submit', function
         headers: headers,
         body: requestBody
     })
-    .then(response => response.json()) // Parse the response as JSON
-    .then(data => showNotification(data.status === 'success' ? data.message : 'An error occurred. Please try again.'))
-    .catch(error => showNotification('An error occurred. Please try again.'));
+        .then(response => response.json()) // Parse the response as JSON
+        .then(data => showNotification(data.status === 'success' ? data.message : 'An error occurred. Please try again.'))
+        .catch(error => showNotification('An error occurred. Please try again.'));
 });
 

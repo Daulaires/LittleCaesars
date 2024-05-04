@@ -3,7 +3,8 @@
 
     top: 50px;
     left: 10px;
-    background-color: #000000; /* Dark purple */
+    background-color: #000000;
+    /* Dark purple */
     color: white;
     padding: 10px 15px;
     border: none;
@@ -13,12 +14,21 @@
     transition: background-color 0.3s ease;
 }
 
-#toggleSpamForm:hover, #toggleSpamForm:focus {
+#toggleSpamForm:hover,
+#toggleSpamForm:focus {
     animation: colorChange 2s infinite;
 }
 
 @keyframes colorChange {
-    0% { background-color: #000000; }
-    50% { background-color: #6a5acd; }
-    100% { background-color: #000000; }
+    0% {
+        background-color: #000000;
+    }
+
+    50% {
+        background-color: #6a5acd;
+    }
+
+    100% {
+        background-color: #000000;
+    }
 }

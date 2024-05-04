@@ -1,7 +1,6 @@
-#emailSpamCounter {
+#title {
     position: fixed;
-    top: 225px; 
-    left: 45%;
+    top: 5px;
     z-index: 1000;
     pointer-events: none;
     display: flex;
@@ -9,6 +8,6 @@
     padding: 10px;
     border: 1px solid black;
     border-radius: 5px;
-    color: white;
-    background-color: #000000;
+    color: rgb(0, 0, 0);
+    background-color: white;
 }

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const toggleButton = document.getElementById('themeToggle');
     const body = document.body;
 
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial call to set the correct text on page load
     updateButtonText();
 
-    toggleButton.addEventListener('click', function() {
+    toggleButton.addEventListener('click', function () {
         if (body.classList.contains('dark-mode')) {
             body.classList.remove('dark-mode');
             body.classList.add('light-mode');
