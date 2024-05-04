@@ -1,0 +1,43 @@
+body.dark-mode .WebsiteList {
+    position: absolute;
+    top: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    opacity: 1;
+    transition: background-color 1s ease-in-out; /* Removed transform property for animation */
+    background-color: #000000;
+    color: #ffffff;
+    box-shadow: 0 0px 6px #ffffff;
+}
+
+body.dark-mode .WebsiteList a,
+body.light-mode .WebsiteList a {
+    text-decoration: none;
+}
+
+body.light-mode .WebsiteList {
+    position: absolute;
+    top: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    opacity: 1;
+    transition: background-color 1s ease-in-out, transform 1s ease-in-out; /* Added transform property for animation */
+    background-color: #f2f2f2;
+    color: #000000;
+    box-shadow: 0 0px 6px #000000;
+}
+
+/* Add hover animation to the contents of the div ul */
+
+/*
+body.dark-mode .WebsiteList ul:hover {
+    transform: scale(1.1);
+    transition: transform 1s ease-in-out;
+}
+*/

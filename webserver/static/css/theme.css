@@ -19,6 +19,11 @@ body.dark-mode {
     /* Light text for dark background */
 }
 
+body.light-mode form {
+    box-shadow: 0 0px 6px #000000;
+    transition: background-color 1s ease, color 1s ease;
+}
+
 body.dark-mode form {
     box-shadow: 0 0px 6px #ffffff;
     background-color: #000000;

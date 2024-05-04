@@ -9,7 +9,7 @@
 
 @media (max-width: 600px) {
     .container {
-        width: 80%;
+        width: 95%;
     }
 
     form {
@@ -25,6 +25,10 @@
         display: none;
     }
 
+    .WebsiteList {
+        display: none;
+    }
+    
 }
 
 body {

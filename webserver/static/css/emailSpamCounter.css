@@ -9,6 +9,41 @@
     padding: 10px;
     border: 1px solid black;
     border-radius: 5px;
-    color: white;
-    background-color: #000000;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
 }
+
+/* if on phone move the counter up more */
+@media only screen and (max-width: 600px) {
+    #emailSpamCounter {
+        top: 90px;
+    }
+}
+
+body.light-mode #emailSpamCounter {
+    box-shadow: 0 0px 6px #000000;
+    background-color: #ffffff;
+    /* Dark gray */
+    color: #000000;
+    /* Light text for dark background */
+    transition: background-color 1s ease, color 1s ease;
+}
+
+body.dark-mode #emailSpamCounter {
+    box-shadow: 0 0px 6px #ffffff;
+    background-color: #000000;
+    /* Dark gray */
+    color: #ffffff;
+    /* Light text for dark background */
+    transition: background-color 1s ease, color 1s ease;
+}
+
+body.dark-mode .WebsiteList a:visited {
+    color: #ffffff; /* Example color for visited links in dark mode */
+}
+
+/* Light mode visited link styles */
+body.light-mode .WebsiteList a:visited {
+    color: #000000; /* Example color for visited links in light mode */
+}
+
