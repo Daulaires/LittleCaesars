@@ -22,7 +22,7 @@ def send_email(email):
         'Nomnom-Platform': 'web',
     }
     session = requests.Session()
-    response = session.post(url, json=data, headers=headers)
+    response = session.post(url, json=data, headers=headers, timeout=10)
     if response.status_code == 200:
         print(f"[!] {email}")
     else:

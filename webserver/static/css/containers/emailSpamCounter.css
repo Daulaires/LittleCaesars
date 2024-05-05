@@ -1,0 +1,39 @@
+#emailSpamCounter {
+    position: fixed;
+    top: 225px;
+    left: 45%;
+    z-index: 1000;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+}
+
+
+
+body.light-mode #emailSpamCounter {
+    box-shadow: 0 0px 6px #000000;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    transition: background-color 1s ease, color 1s ease;
+}
+
+body.dark-mode #emailSpamCounter {
+    box-shadow: 0 0px 6px #ffffff;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    transition: background-color 1s ease, color 1s ease;
+}
+
+body.dark-mode .WebsiteList a:visited {
+    color: #ffffff;
+}
+
+body.light-mode .WebsiteList a:visited {
+    color: #000000;
+}

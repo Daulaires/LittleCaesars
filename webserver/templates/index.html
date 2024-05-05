@@ -7,15 +7,16 @@
     <meta charset="UTF-8" name="description" content="Email Spammer testing website.">
     <meta charset="UTF-8" name="theme-color" content="#000000">
     <title>Email Spammer</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu/menu.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/title.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme/themeToggle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme/darkmode.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/title_element/title.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/websiteList.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/toggleSpamForm.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/emailSpamCounter.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/toggleAccountForm.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/notificationContainer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms/toggleSpamForm.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/containers/emailSpamCounter.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms/toggleAccountForm.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/containers/notificationContainer.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
@@ -58,8 +59,8 @@
     <script defer src="{{ url_for('static', filename='js/forms/createAccount.js') }}"></script>
     <script defer src="{{ url_for('static', filename='js/utils/updateTimesCounter.js') }}"></script>
     <script defer src="{{ url_for('static', filename='js/menu/elements/hideSpamForm.js') }}"></script>
-    <script defer src="{{ url_for('static', filename='js/menu/elements/theme/Darkmode.js') }}"></script>
     <script defer src="{{ url_for('static', filename='js/menu/elements/hideAccountForm.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/menu/elements/theme/Darkmode.js') }}"></script>
 </body>
 
 </html>

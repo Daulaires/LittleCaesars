@@ -1,0 +1,121 @@
+a,
+button,
+div,
+input {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+a,
+button,
+div,
+input,
+body,
+body.light-mode,
+body.dark-mode,
+#themeToggle {
+    transition: background-color 1s ease, color 1s ease;
+}
+
+body.light-mode {
+    background-color: #e0e0e0;
+    color: #000000;
+}
+
+body.dark-mode {
+    background-color: #000000;
+    color: #e0e0e0;
+}
+
+body.light-mode form {
+    box-shadow: 0 0px 6px #000000;
+    transition: background-color 1s ease, color 1s ease;
+}
+
+body.dark-mode form {
+    box-shadow: 0 0px 6px #ffffff;
+    background-color: #000000;
+    color: #ffffff;
+    transition: background-color 1s ease, color 1s ease;
+}
+
+body.light-mode label {
+    color: #000000;
+}
+
+body.dark-mode label {
+    color: #ffffff;
+}
+
+body.dark-mode button {
+    background-color: #000000;
+    color: white;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0px 6px #ffffff;
+}
+
+body.light-mode button {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0px 6px #000000;
+}
+
+@keyframes light-mode-colorChange {
+    0% {
+        background-color: #ffffff;
+    }
+
+    50% {
+        background-color: #656565;
+    }
+
+    100% {
+        background-color: #ffffff;
+    }
+}
+
+@keyframes dark-mode-colorChange {
+    0% {
+        background-color: #000000;
+    }
+
+    50% {
+        background-color: #656565;
+    }
+
+    100% {
+        background-color: #000000;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+
+    body.light-mode {
+        background-color: #000000;
+        color: #e0e0e0;
+    }
+
+    body.light-mode form {
+        box-shadow: 0 0px 6px #ffffff;
+        background-color: #000000;
+        color: #ffffff;
+    }
+
+    body.light-mode button {
+        background-color: #000000;
+        color: white;
+        box-shadow: 0 0px 6px #ffffff;
+    }
+
+    body.light-mode div #emailSpamCounter {
+        background-color: #000000;
+        color: white;
+        box-shadow: 0 0px 6px #ffffff;
+    }
+
+    #themeToggle {
+        display: none;
+    }
+
+}

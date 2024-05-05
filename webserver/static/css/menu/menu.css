@@ -8,6 +8,20 @@
     to { opacity: 0; }
 }
 
+body.light-mode #menuToggle {
+    box-shadow: 0 0px 6px #000000;
+    background-color: #ffffff; /* Light gray */
+    color: #000000; /* Dark text for light background */
+    transition: background-color 1s ease, color 1s ease;
+}
+
+body.dark-mode #menuToggle {
+    box-shadow: 0 0px 6px #ffffff;
+    background-color: #000000; /* Dark gray */
+    color: #ffffff; /* Light text for dark background */
+    transition: background-color 0.5s ease, color 1s ease;
+}
+
 #menuToggle {
     position: absolute;
     top: 10px;
@@ -21,13 +35,14 @@
     font-weight: bold;
     opacity: 1; /* Start with full opacity */
     transition: opacity 0.9s ease; /* Smooth transition for opacity */
+    box-shadow: 0 0px 6px #ffffff;
 }
 
-#menuToggle.show {
+.show {
     animation: fadeIn 0.5s ease-in-out forwards; /* Fade in animation */
 }
 
-#menuToggle.hide {
+.hide {
     animation: fadeOut 0.5s ease-in-out forwards; /* Fade out animation */
 }
 

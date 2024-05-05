@@ -1,0 +1,68 @@
+body.light-mode #toggleCreateAccountForm {
+    position: absolute;
+    top: 90px;
+    left: 10px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0px 6px #000000;
+}
+
+body.dark-mode #toggleCreateAccountForm {
+    position: absolute;
+    top: 90px;
+    left: 10px;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0px 6px #ffffff;
+}
+
+body.light-mode #toggleCreateAccountForm:hover,
+body.light-mode #toggleCreateAccountForm:focus {
+    animation: light-mode-colorChange 2s infinite;
+}
+
+body.dark-mode #toggleCreateAccountForm:hover,
+body.dark-mode #toggleCreateAccountForm:focus {
+    animation: dark-mode-colorChange 2s infinite;
+}
+
+
+@keyframes light-mode-colorChange {
+    0% {
+        background-color: #ffffff;
+    }
+
+    50% {
+        background-color: #656565;
+    }
+
+    100% {
+        background-color: #ffffff;
+    }
+}
+
+@keyframes dark-mode-colorChange {
+    0% {
+        background-color: #000000;
+    }
+
+    50% {
+        background-color: #656565;
+    }
+
+    100% {
+        background-color: #000000;
+    }
+}

@@ -16,12 +16,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     menuToggleButton.addEventListener('click', function () {
         if (menu.style.display === 'none') {
-            menu.style.display = 'block';
+            setTimeout(function () {
+                menu.classList.remove('hide');
+                menu.classList.add('show');
+                menu.style.display = 'block';
+            }, 100);
         } else {
-            menu.style.display = 'none';
+            setTimeout(function () {
+                menu.classList.add('hide');
+            }, 500);
+            setTimeout(function () {
+                menu.style.display = 'none';
+            }, 1000);
         }
-        // Update the button text after toggling the menu's visibility
-        updateButtonText();
+        // Update the button text after toggling the form's visibility
+        setTimeout(function () {
+            updateButtonText();
+        }, 1000);
     });
 
 });

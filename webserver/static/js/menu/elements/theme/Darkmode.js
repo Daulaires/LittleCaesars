@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to update the button text based on the current mode
     function updateButtonText() {
         if (body.classList.contains('dark-mode')) {
-            toggleButton.textContent = 'Toggle Light Mode';
+            toggleButton.textContent = 'Light Mode';
         } else {
-            toggleButton.textContent = 'Toggle Dark Mode';
+            toggleButton.textContent = 'Dark Mode';
         }
     }
 

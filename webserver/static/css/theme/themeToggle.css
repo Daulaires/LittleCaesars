@@ -1,0 +1,65 @@
+body.light-mode #themeToggle {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.8s ease;
+}
+
+body.dark-mode #themeToggle {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.8s ease;
+}
+
+body.light-mode #themeToggle:hover,
+body.light-mode #themeToggle:focus {
+    animation: light-mode-colorChange 2s infinite;
+}
+
+body.dark-mode #themeToggle:hover,
+body.dark-mode #themeToggle:focus {
+    animation: dark-mode-colorChange 2s infinite;
+}
+
+@keyframes light-mode-colorChange {
+    0% {
+        background-color: #ffffff;
+    }
+
+    50% {
+        background-color: #656565;
+    }
+
+    100% {
+        background-color: #ffffff;
+    }
+}
+
+@keyframes dark-mode-colorChange {
+    0% {
+        background-color: #000000;
+    }
+
+    50% {
+        background-color: #656565;
+    }
+
+    100% {
+        background-color: #000000;
+    }
+}

@@ -7,7 +7,13 @@
     gap: 5px;
 }
 
-@media (max-width: 600px) {
+@media only screen and (max-width: 600px) {
+    body.light-mode #emailSpamCounter {
+        top: 15px;
+        left: 10px;
+        padding: 5px;
+    }
+
     .container {
         width: 95%;
     }
@@ -28,7 +34,6 @@
     .WebsiteList {
         display: none;
     }
-    
 }
 
 body {
@@ -66,7 +71,7 @@ form button {
     font-weight: bold;
     transition: background-color 0.3s ease;
     justify-self: center; 
-    margin-left: 40px;
+    margin-left: 32px;
 }
 
 @keyframes fadeIn {
@@ -116,18 +121,38 @@ input[type="string"]:focus {
     border-color: #000000;
 }
 
-button[type="submit"]:hover,
-button[type="submit"]:focus {
-    animation: colorChange 2s infinite;
+body.light-mode button[type="submit"]:hover,
+body.light-mode button[type="submit"]:focus {
+    animation: light-mode-colorChange 2s infinite;
 }
 
-@keyframes colorChange {
+
+body.dark-mode button[type="submit"]:hover,
+body.dark-mode button[type="submit"]:focus {
+    animation: dark-mode-colorChange 2s infinite;
+}
+
+@keyframes light-mode-colorChange {
+    0% {
+        background-color: #ffffff;
+    }
+
+    50% {
+        background-color: #656565;
+    }
+
+    100% {
+        background-color: #ffffff;
+    }
+}
+
+@keyframes dark-mode-colorChange {
     0% {
         background-color: #000000;
     }
 
     50% {
-        background-color: #6a5acd;
+        background-color: #656565;
     }
 
     100% {
