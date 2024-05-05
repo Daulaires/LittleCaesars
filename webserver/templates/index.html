@@ -7,17 +7,19 @@
     <meta charset="UTF-8" name="description" content="Email Spammer testing website.">
     <meta charset="UTF-8" name="theme-color" content="#000000">
     <title>Email Spammer</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme/themeToggle.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme/darkmode.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/title_element/title.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/watermark.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/websiteList.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/containers/notificationContainer.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/containers/emailSpamCounter.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu/menuToggle.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu/randomAccount.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu/formButtons/SpamForm.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu/formButtons/AccountForm.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/elements/title.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/elements/theme/themeToggle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/elements/theme/darkmode.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/elements/containers/notificationContainer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/elements/containers/emailSpamCounter.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/elements/menu/menuToggle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/elements/menu/randomAccount.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/elements/menu/formButtons/SpamForm.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/elements/menu/formButtons/AccountForm.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
@@ -55,6 +57,7 @@
             <button type="submit" id="createAccountButton">Create Account</button>
         </form>
     </div>
+    <img src="{{ url_for('static', filename='images/favicon.ico') }}" id="watermark" alt="Watermark">
     <script defer src="{{ url_for('static', filename='js/menu/menu.js') }}"></script>
     <script defer src="{{ url_for('static', filename='js/forms/spamForm.js') }}"></script>
     <script defer src="{{ url_for('static', filename='js/utils/notification.js') }}"></script>

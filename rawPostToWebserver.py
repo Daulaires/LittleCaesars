@@ -1,11 +1,14 @@
 import requests
 import argparse
 
-def send_spam(email,times):
-    url = "http://127.0.0.1:999/send_spam"
+def sendSpam(email,times):
+    url = "http://127.0.0.1:999/v1/spam"
 
     # Build the headers and request body
-    data = {"email": f"{email}", "times": f"{times}"}
+    data = {
+            "email": f"{email}",
+            "times": f"{times}"
+           }
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.6367.118 Safari/537.36',
         'Content-Type': 'application/json',
@@ -27,7 +30,6 @@ def send_spam(email,times):
         # make it green 
         print("\033[92m" + "Request successful." + "\033[0m")
     else:
-        # make it red
         print("\033[91m" + "Request failed." + "\033[0m")
         print(response.text)
         
@@ -38,7 +40,11 @@ spam_parser = subparsers.add_parser('spam', help='Spam the email.')
 spam_parser.add_argument('email', type=str, help='The email to spam.')
 spam_parser.add_argument('times', type=int, help='The number of times to spam the email.', default=1)
 
+# python rawPostToWebserver.py spam email times
+
 args = parser.parse_args()
 
 if args.command == "spam":
-    send_spam(args.email, args.times)
+    sendSpam(args.email , args.times)
+else :
+    print("No command given.")

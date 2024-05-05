@@ -6,7 +6,7 @@ document.getElementById('spamForm').addEventListener('submit', function (event) 
     const times = formData.get('times');
 
     // Construct the URL for the POST request
-    const url = '/send_spam'; // Assuming the Flask app is running on the same domain
+    const url = '/v1/spam'; // Assuming the Flask app is running on the same domain
 
     // Prepare the request body
     const requestBody = JSON.stringify({

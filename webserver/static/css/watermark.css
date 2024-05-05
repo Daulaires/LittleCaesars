@@ -1,0 +1,9 @@
+#watermark {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    transform: rotate(0.5deg);
+    opacity: 0.09;
+    border-radius: 5px;
+    z-index: 1000;
+}

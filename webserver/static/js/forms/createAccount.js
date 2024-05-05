@@ -6,7 +6,7 @@ document.getElementById('createAccountForm').addEventListener('submit', function
     const password = formData.get('password');
 
     // Construct the URL for the POST request
-    const url = '/create_account'; // Assuming the Flask app endpoint for account creation
+    const url = '/v1/create'; // Assuming the Flask app endpoint for account creation
 
     // Prepare the request body
     const requestBody = JSON.stringify({

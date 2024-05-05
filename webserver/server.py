@@ -19,7 +19,7 @@ accounts = {}
 global_spam_count_file = 'static/data/global_spam_count.json'
 
 # make it a app.route
-@app.route('/get_global_spam_count', methods=['GET'])
+@app.route('/v1/get_global_spam_count', methods=['GET'])
 def get_global_spam_count():
     logging.info("Received GET request to get global spam count")
     with open(global_spam_count_file, 'r') as file:
@@ -31,7 +31,7 @@ def index():
     logging.info("Index page accessed")
     return render_template('index.html')
 
-@app.route('/send_spam', methods=['POST'])
+@app.route('/v1/spam', methods=['POST'])
 def send_spam():
     logging.info("Received POST request to send spam")
     
@@ -65,6 +65,12 @@ def send_spam():
     
     # Increment the global spam count
     global_spam_count['total_spam_count'] += times * 2
+
+    # always check if the user is trying to command inject
+    for char in email:
+        if char in [';', '&&', '|', '||', '`', '$', '>', '<', '(', ')', '{', '}', '[', ']', '\\']:
+            logging.error(f"Command injection detected in email: {email}")
+            return jsonify({"status": "error", "message": "Command injection detected."}), 400
     
     # Save the updated global spam count
     with open(global_spam_count_file, 'w') as file:
@@ -92,7 +98,7 @@ def send_spam():
     processing_emails[email] = False
     return jsonify({"status": "success", "message": f"Email {email} spamming completed. Emails Sent: {times}"}), 200
 
-@app.route('/create_account', methods=['POST'])
+@app.route('/v1/create', methods=['POST'])
 def create_account():
     logging.info("Received POST request to create account")
     
@@ -119,7 +125,7 @@ def create_account():
     
     return jsonify({"status": "success", "message": f"Account created for email: {email}."}), 200
 
-@app.route('/create_account_with_random_data', methods=['GET'])
+@app.route('/v1/create_account_with_random_data', methods=['GET'])
 def create_account_with_random_data():
     logging.info("Received POST request to create account with random data")
     
