@@ -13,13 +13,11 @@
   - Enter the email and then the amount of times.
 
 - Ways to prevent this are:
-  - When the user submits to the input refresh the page to the home page, or after certain amount of retries from the incoming IP, Block connections from that IP, or various other checks like the host computer name. Something that can correlate to the user, you get my point. and setting it up where it won't allow the user to spam the reset password in this manner.  
-
-![Screenshot_1](https://github.com/Daulaires/LittleCaesars/assets/102845355/77315083-a725-4016-ac3a-7a755e80cd3b)
-![image](https://github.com/Daulaires/LittleCaesarsEmailSpammer/assets/102845355/3fabf960-9ea0-4ece-bb46-82ed89a1c737)
-
+  - When the user submits to the input refresh the page to the home page, or after certain amount of retries from the incoming IP, Block connections from that IP, or various other checks like the host computer name. Something that can correlate to the user, you get my point. and setting it up where it won't allow the user to spam the reset password in this manner.
+  
 ## Conclusion
   - Why 
     - Just was a way I found most websites allowed, such as CNN.com with some little recode to the script.
     - Well there is no limit, or security setup for the reset password.
     - Many big companies have vulnerabilities, but some just funny ones.
+![image](https://github.com/Daulaires/ResetPasswordSpammer/assets/102845355/19f39580-0527-4314-92b9-78c3dd1c91f6)
