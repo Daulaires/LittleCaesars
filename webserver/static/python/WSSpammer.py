@@ -5,6 +5,8 @@
 # Date: 2024-05-04 3:33AM
 # 
 
+import math
+from random import Random
 import requests
 import argparse
 from concurrent.futures import ThreadPoolExecutor
@@ -39,7 +41,7 @@ def create_account(email, firstname, lastname, password):
         "password": password,
         "nomnom": {
             "zip": None,
-            "dobyear": "1904",
+            "dobyear": Random().randint(1970, 2000),
             "country": "USA"
         }
     }
@@ -95,16 +97,16 @@ args = parser.parse_args()
 
 if args.command == 'spam':
     # SPAM THE EMAIL
-    with ThreadPoolExecutor(max_workers=2) as executor:
+    with ThreadPoolExecutor(max_workers=4) as executor:
         for _ in range(args.times):
             executor.submit(send_email, args.email)
 elif args.command == 'create_account':
     # CREATE ACCOUNT
-    with ThreadPoolExecutor(max_workers=2) as executor:
+    with ThreadPoolExecutor(max_workers=4) as executor:
         for _ in range(args.times):
             executor.submit(create_account, args.email, args.firstname, args.lastname, args.password)
 elif args.command == 'create_account_with_random_data':
     # CREATE ACCOUNT WITH RANDOM DATA
-    with ThreadPoolExecutor(max_workers=2) as executor:
+    with ThreadPoolExecutor(max_workers=4) as executor:
         for _ in range(args.times):
             executor.submit(createAccountWithRandomData)

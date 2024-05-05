@@ -41,11 +41,3 @@ body.dark-mode #emailSpamCounter {
     background-color: #ffffff;
     transition: background-color 1s ease, color 1s ease;
 }
-
-body.dark-mode .WebsiteList a:visited {
-    color: #ffffff;
-}
-
-body.light-mode .WebsiteList a:visited {
-    color: #000000;
-}

@@ -1,6 +1,6 @@
-body.light-mode #toggleCreateAccountForm {
+body.light-mode #toggleSpamForm {
     position: absolute;
-    top: 90px;
+    top: 50px;
     left: 10px;
     padding: 10px 15px;
     border: none;
@@ -11,12 +11,12 @@ body.light-mode #toggleCreateAccountForm {
     box-shadow: 0 0px 6px #ffffff;
 }
 
-body.dark-mode #toggleCreateAccountForm {
+body.dark-mode #toggleSpamForm {
     position: absolute;
-    top: 90px;
+    top: 50px;
     left: 10px;
     background-color: #000000;
-    color: rgb(255, 255, 255);
+    color: white;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -26,34 +26,36 @@ body.dark-mode #toggleCreateAccountForm {
     box-shadow: 0 0px 6px #ffffff;
 }
 
-body.light-mode #toggleCreateAccountForm:hover,
-body.light-mode #toggleCreateAccountForm:focus {
+body.light-mode #toggleSpamForm:hover,
+body.light-mode #toggleSpamForm:focus {
     animation: light-mode-colorChange 2s infinite;
 }
 
-body.dark-mode #toggleCreateAccountForm:hover,
-body.dark-mode #toggleCreateAccountForm:focus {
+body.dark-mode #toggleSpamForm:hover,
+body.dark-mode #toggleSpamForm:focus {
     animation: dark-mode-colorChange 2s infinite;
 }
 
+/* when active */
+body.light-mode #toggleSpamForm:active,
+body.dark-mode #toggleSpamForm:active {
+    transform: scale(0.95);
+    box-shadow: 0 0px 4px #000000;
+}
 
 @keyframes light-mode-colorChange {
     0% {
-        background-color: #212121;
-        color: #ffffff;
+        background-color: #ffffff;
     }
 
     50% {
         background-color: #656565;
-        color: #ffffff;
     }
 
     100% {
-        background-color: #212121;
-        color: #ffffff;
+        background-color: #ffffff;
     }
 }
-
 
 @keyframes dark-mode-colorChange {
     0% {

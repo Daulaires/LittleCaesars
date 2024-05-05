@@ -1,0 +1,86 @@
+body.light-mode #toggleCreateAccountForm {
+    position: absolute;
+    top: 90px;
+    left: 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0px 6px #ffffff;
+}
+
+body.dark-mode #toggleCreateAccountForm {
+    position: absolute;
+    top: 90px;
+    left: 10px;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0px 6px #ffffff;
+}
+
+body.light-mode #toggleCreateAccountForm:active,
+body.dark-mode #toggleCreateAccountForm:active {
+    transform: scale(0.95); /* Slightly reduce the size of the button */
+    box-shadow: 0 0px 4px #000000; /* Adjust the shadow for a pressed effect */
+}
+
+/* For light mode, you might want to change the background color slightly */
+body.light-mode #toggleCreateAccountForm:active {
+    background-color: #333333; /* Darker shade for pressed effect */
+}
+
+/* For dark mode, you might want to change the background color slightly */
+body.dark-mode #toggleCreateAccountForm:active {
+    background-color: #333333; /* Darker shade for pressed effect */
+}
+
+body.light-mode #toggleCreateAccountForm:hover,
+body.light-mode #toggleCreateAccountForm:focus {
+    animation: light-mode-colorChange 2s infinite;
+}
+
+body.dark-mode #toggleCreateAccountForm:hover,
+body.dark-mode #toggleCreateAccountForm:focus {
+    animation: dark-mode-colorChange 2s infinite;
+}
+
+
+@keyframes light-mode-colorChange {
+    0% {
+        background-color: #212121;
+        color: #ffffff;
+    }
+
+    50% {
+        background-color: #656565;
+        color: #ffffff;
+    }
+
+    100% {
+        background-color: #212121;
+        color: #ffffff;
+    }
+}
+
+
+@keyframes dark-mode-colorChange {
+    0% {
+        background-color: #000000;
+    }
+
+    50% {
+        background-color: #656565;
+    }
+
+    100% {
+        background-color: #000000;
+    }
+}

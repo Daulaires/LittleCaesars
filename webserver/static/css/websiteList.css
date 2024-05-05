@@ -7,7 +7,7 @@ body.dark-mode .WebsiteList {
     cursor: pointer;
     font-weight: bold;
     opacity: 1;
-    transition: background-color 1s ease-in-out; /* Removed transform property for animation */
+    transition: background-color 1s ease-in-out;
     background-color: #000000;
     color: #ffffff;
     box-shadow: 0 0px 6px #ffffff;
@@ -27,10 +27,19 @@ body.light-mode .WebsiteList {
     cursor: pointer;
     font-weight: bold;
     opacity: 1;
-    transition: background-color 1s ease-in-out, transform 1s ease-in-out; /* Added transform property for animation */
+    transition: background-color 1s ease-in-out, transform 1s ease-in-out;
     background-color: #f2f2f2;
     color: #000000;
     box-shadow: 0 0px 6px #000000;
+}
+
+
+body.dark-mode .WebsiteList a:visited {
+    color: #ffffff;
+}
+
+body.light-mode .WebsiteList a:visited {
+    color: #000000;
 }
 
 /* Add hover animation to the contents of the div ul */

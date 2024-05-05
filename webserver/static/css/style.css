@@ -126,6 +126,9 @@ body.light-mode button[type="submit"]:focus {
     animation: light-mode-colorChange 2s infinite;
 }
 
+/* when the user presses the button */
+
+
 body.dark-mode button[type="submit"]:hover,
 body.dark-mode button[type="submit"]:focus {
     animation: dark-mode-colorChange 2s infinite;

@@ -17,8 +17,6 @@ body.dark-mode,
     transition: background-color 1s ease, color 1s ease;
 }
 
-
-
 body.light-mode {
     background-color: #e0e0e0;
     color: #000000;
@@ -85,8 +83,42 @@ body.light-mode button:focus {
     }
 }
 
+@keyframes dark-mode-colorChange {
+    0% {
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+    50% {
+        background-color: #656565;
+        color: #000000;
+    }
+
+    100% {
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+}
+
+
+
+/* Prefers dark mode */
+
 @media (prefers-color-scheme: dark) {
 
+    body.light-mode .WebsiteList {
+        position: absolute;
+        top: 20px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        opacity: 1;
+        transition: background-color 1s ease-in-out, transform 1s ease-in-out;
+        box-shadow: 0 0px 6px #000000;
+    }
     body.light-mode {
         background-color: #000000;
         color: #e0e0e0;
@@ -96,6 +128,12 @@ body.light-mode button:focus {
         box-shadow: 0 0px 6px #ffffff;
         background-color: #000000;
         color: #ffffff;
+    }
+    body.light-mode #menuToggle {
+        box-shadow: 0 0px 6px #ffffff;
+        background-color: #000000;
+        color: #ffffff;
+        transition: background-color 1s ease, color 1s ease;
     }
 
     body.light-mode #spamButton {
@@ -114,6 +152,13 @@ body.light-mode button:focus {
         background-color: #000000;
         color: white;
         box-shadow: 0 0px 6px #ffffff;
+    }
+        
+    body.light-mode button[type="submit"]:active {
+        transform: scale(0.95);
+        box-shadow: 0 0px 4px #000000;
+        background-color: #333333;
+        color: #ffffff;
     }
 
     body.light-mode button {
