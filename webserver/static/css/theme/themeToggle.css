@@ -38,15 +38,18 @@ body.dark-mode #themeToggle:focus {
 
 @keyframes light-mode-colorChange {
     0% {
-        background-color: #ffffff;
+        background-color: #212121;
+        color: #ffffff;
     }
 
     50% {
         background-color: #656565;
+        color: #ffffff;
     }
 
     100% {
-        background-color: #ffffff;
+        background-color: #212121;
+        color: #ffffff;
     }
 }
 

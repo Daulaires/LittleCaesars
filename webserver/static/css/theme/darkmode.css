@@ -17,6 +17,8 @@ body.dark-mode,
     transition: background-color 1s ease, color 1s ease;
 }
 
+
+
 body.light-mode {
     background-color: #e0e0e0;
     color: #000000;
@@ -61,31 +63,25 @@ body.light-mode button {
     box-shadow: 0 0px 6px #000000;
 }
 
-@keyframes light-mode-colorChange {
-    0% {
-        background-color: #ffffff;
-    }
-
-    50% {
-        background-color: #656565;
-    }
-
-    100% {
-        background-color: #ffffff;
-    }
+body.light-mode button:hover,
+body.light-mode button:focus {
+    animation: light-mode-colorChange 2s infinite;
 }
 
-@keyframes dark-mode-colorChange {
+@keyframes light-mode-colorChange {
     0% {
-        background-color: #000000;
+        background-color: #212121;
+        color: #ffffff;
     }
 
     50% {
         background-color: #656565;
+        color: #ffffff;
     }
 
     100% {
-        background-color: #000000;
+        background-color: #212121;
+        color: #ffffff;
     }
 }
 
@@ -102,7 +98,13 @@ body.light-mode button {
         color: #ffffff;
     }
 
-    body.light-mode button {
+    body.light-mode #spamButton {
+        background-color: #000000;
+        color: white;
+        box-shadow: 0 0px 6px #ffffff;
+    }
+
+    body.light-mode #createAccountButton {
         background-color: #000000;
         color: white;
         box-shadow: 0 0px 6px #ffffff;
@@ -114,8 +116,27 @@ body.light-mode button {
         box-shadow: 0 0px 6px #ffffff;
     }
 
+    body.light-mode button {
+        background-color: #000000;
+        color: rgb(255, 255, 255);
+        transition: background-color 0.3s ease;
+        box-shadow: 0 0px 6px #000000;
+    }
+
     #themeToggle {
         display: none;
+    }
+
+    #notificationContainer .notification {
+        background-color: #333;
+        color: #ffffff;
+    }
+
+    body.light-mode #menuToggle {
+        box-shadow: 0 0px 6px #000000;
+        background-color: #000000; /* Light gray */
+        color: #ffffff; /* Dark text for light background */
+        transition: background-color 1s ease, color 1s ease;
     }
 
 }

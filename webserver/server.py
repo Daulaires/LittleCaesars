@@ -119,5 +119,27 @@ def create_account():
     
     return jsonify({"status": "success", "message": f"Account created for email: {email}."}), 200
 
+@app.route('/create_account_with_random_data', methods=['GET'])
+def create_account_with_random_data():
+    logging.info("Received POST request to create account with random data")
+    
+    # Create a temporary file for the output
+    temp_file = tempfile.NamedTemporaryFile(delete=False)
+    temp_file.close()
+    
+    # Start the process
+    process = subprocess.Popen(['python', 'static/python/WSSpammer.py', 'create_account_with_random_data', '1'], stdout=open(temp_file.name, 'w'))
+
+    # Wait for the process to complete
+    process.wait()
+    
+    # Read the output
+    with open(temp_file.name, 'r') as file:
+        output = file.read()
+    print(output)
+    logging.info("Account created with random data")
+    
+    return jsonify({"status": "success", "message": f"Account created with random data. Output: {output}"}), 200
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0",port=999,debug=True)

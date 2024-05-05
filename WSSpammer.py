@@ -60,20 +60,6 @@ def create_account(email, firstname, lastname, password):
         print(f"[-] Failed to create account for {email}. Status code: {response.status_code}")
         print(response.text)
 
-def randomlyGeneratedAccount():
-    import random
-    import string
-    email = ''.join(random.choices(string.ascii_lowercase + string.digits, k=10)) + '@gmail.com'
-    firstname = ''.join(random.choices(string.ascii_lowercase, k=10))
-    lastname = ''.join(random.choices(string.ascii_lowercase, k=10))
-    password = ''.join(random.choices(string.ascii_lowercase + string.digits, k=10))
-    return email, firstname, lastname, password
-
-def createAccountWithRandomData():
-    email, firstname, lastname, password = randomlyGeneratedAccount()
-    create_account(email, firstname, lastname, password)
-    return email, firstname, lastname, password
-
 parser = argparse.ArgumentParser(description='Wingstop Spammer and Account Creator')
 subparsers = parser.add_subparsers(dest='command')
 
@@ -88,9 +74,6 @@ create_account_parser.add_argument('lastname', type=str, help='The last name for
 create_account_parser.add_argument('password', type=str, help='The password for the new account.')
 create_account_parser.add_argument('times', type=int, help='The number of times to attempt account creation.', default=1)
 
-create_account_with_random_data_parser = subparsers.add_parser('create_account_with_random_data', help='Create a new Wingstop account with random data.')
-create_account_with_random_data_parser.add_argument('times', type=int, help='The number of times to attempt account creation.', default=1)
-
 args = parser.parse_args()
 
 if args.command == 'spam':
@@ -103,8 +86,3 @@ elif args.command == 'create_account':
     with ThreadPoolExecutor(max_workers=2) as executor:
         for _ in range(args.times):
             executor.submit(create_account, args.email, args.firstname, args.lastname, args.password)
-elif args.command == 'create_account_with_random_data':
-    # CREATE ACCOUNT WITH RANDOM DATA
-    with ThreadPoolExecutor(max_workers=2) as executor:
-        for _ in range(args.times):
-            executor.submit(createAccountWithRandomData)

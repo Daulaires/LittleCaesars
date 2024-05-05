@@ -2,15 +2,13 @@ body.light-mode #toggleCreateAccountForm {
     position: absolute;
     top: 90px;
     left: 10px;
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s ease;
-    box-shadow: 0 0px 6px #000000;
+    box-shadow: 0 0px 6px #ffffff;
 }
 
 body.dark-mode #toggleCreateAccountForm {
@@ -41,17 +39,21 @@ body.dark-mode #toggleCreateAccountForm:focus {
 
 @keyframes light-mode-colorChange {
     0% {
-        background-color: #ffffff;
+        background-color: #212121;
+        color: #ffffff;
     }
 
     50% {
         background-color: #656565;
+        color: #ffffff;
     }
 
     100% {
-        background-color: #ffffff;
+        background-color: #212121;
+        color: #ffffff;
     }
 }
+
 
 @keyframes dark-mode-colorChange {
     0% {
