@@ -3,7 +3,8 @@
 - Create an account under the email you want to spam, then logout, and that is it.
   - As long there is an account created on this website it will then abuse the reset password. 
 - Have google chrome installed and I believe it should work
-- If not troubleshoot and do this ^^^
+- WSSpammer - Wingstop Email Spammer
+  - same as little caesars reset password spam, but it will be using post requests instead of using selenium. 
 ----
 ## What does it really do?
   - Well it simply takes the html, uses selenium to then get the attribute / data I want to look for, specifically the class id, which then looks for a button in that class id to then do the automated requests
