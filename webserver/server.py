@@ -11,25 +11,24 @@ import tempfile
 from flask import Flask, jsonify, render_template, request, abort
 import logging
 
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__, template_folder='templates', static_folder='static')
 processing_emails = {}
 accounts = {}
 
 # include the global_spam_count.json file
 global_spam_count_file = 'static/data/global_spam_count.json'
 
-# make it a app.route
+@app.route('/')
+def index():
+    logging.info("Index page accessed")
+    return render_template('index.html')
+
 @app.route('/v1/get_global_spam_count', methods=['GET'])
 def get_global_spam_count():
     logging.info("Received GET request to get global spam count")
     with open(global_spam_count_file, 'r') as file:
         global_spam_count = json.load(file)
     return jsonify(global_spam_count), 200
-
-@app.route('/')
-def index():
-    logging.info("Index page accessed")
-    return render_template('index.html')
 
 @app.route('/v1/spam', methods=['POST'])
 def send_spam():
@@ -66,12 +65,6 @@ def send_spam():
     # Increment the global spam count
     global_spam_count['total_spam_count'] += times * 2
 
-    # always check if the user is trying to command inject
-    for char in email:
-        if char in [';', '&&', '|', '||', '`', '$', '>', '<', '(', ')', '{', '}', '[', ']', '\\']:
-            logging.error(f"Command injection detected in email: {email}")
-            return jsonify({"status": "error", "message": "Command injection detected."}), 400
-    
     # Save the updated global spam count
     with open(global_spam_count_file, 'w') as file:
         json.dump(global_spam_count, file, indent=4)
@@ -145,7 +138,7 @@ def create_account_with_random_data():
     print(output)
     logging.info("Account created with random data")
     
-    return jsonify({"status": "success", "message": f"Account created with random data. Output: {output}"}), 200
+    return jsonify({"status": "success", "message": f"{output}"}), 200
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0",port=999,debug=True)

@@ -7,6 +7,7 @@
 
 import math
 from random import Random
+from flask import jsonify
 import requests
 import argparse
 from concurrent.futures import ThreadPoolExecutor
@@ -57,7 +58,7 @@ def create_account(email, firstname, lastname, password):
     session = requests.Session()
     response = session.post(url, json=data, headers=headers)
     if response.status_code == 200:
-        print(f"[+] Account created for {email}")
+        print(f"[+] Created account for {email}")
     else:
         print(f"[-] Failed to create account for {email}. Status code: {response.status_code}")
         print(response.text)

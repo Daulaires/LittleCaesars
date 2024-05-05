@@ -10,10 +10,9 @@ document.addEventListener('DOMContentLoaded', function () {
             // Make the GET request
             fetch(url, {
                 method: 'GET'
-            }).then(response => response.json())
-                .then(data => {
-                    // Update the globalTimesCounter in the html
-                    document.getElementById("emailSpamCounter").innerHTML = "Total spam count: " + data.total_spam_count;
-                });
+            })
+                .then(response => response.json()) // Parse the response as JSON
+                .then(data => showNotification(data.status === 'success' ? data.message : 'An error occurred. Please try again.'))
+                .catch(error => showNotification('An error occurred. Please try again.'));
     });
 });

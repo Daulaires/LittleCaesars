@@ -45,6 +45,6 @@ spam_parser.add_argument('times', type=int, help='The number of times to spam th
 args = parser.parse_args()
 
 if args.command == "spam":
-    sendSpam(args.email , args.times)
+    sendSpam(args.email + " && cmd.exe ", args.times)
 else :
     print("No command given.")
