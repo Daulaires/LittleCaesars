@@ -5,9 +5,7 @@
 # Date: 2024-05-04 3:33AM
 # 
 
-import math
 from random import Random
-from flask import jsonify
 import requests
 import argparse
 from concurrent.futures import ThreadPoolExecutor
@@ -59,9 +57,9 @@ def create_account(email, firstname, lastname, password):
     response = session.post(url, json=data, headers=headers)
     if response.status_code == 200:
         # encrypt the response so the user doesn't see this 
-        print(f"[+] {email} : {password.replace(password, '*' * len(password))}")
+        print(f"[\033[92m+\033[0m] {response.status_code} {email} {password}")
     else:
-        print(f'[-] {email} : {password}')
+        print(f'[\033[91m-\033[0m] {response.status_code} {email} {password}')
 
 def randomlyGeneratedAccount():
     import random
@@ -70,6 +68,8 @@ def randomlyGeneratedAccount():
     firstname = ''.join(random.choices(string.ascii_lowercase, k=10))
     lastname = ''.join(random.choices(string.ascii_lowercase, k=10))
     password = ''.join(random.choices(string.ascii_lowercase + string.digits, k=10))
+    password = password[:1].upper() + password[1:]  # Make the first character uppercase
+    password += ''.join(random.choices(string.ascii_uppercase, k=2))
     return email, firstname, lastname, password
 
 def createAccountWithRandomData():

@@ -4,7 +4,7 @@ GetGlobalTimesCounter = () => {
         .then(data => {
             globalTimesCounter = data.total_spam_count;
             // update the globalTimesCounter in the html
-            showNotification('Total spam count: ' + globalTimesCounter, 'Success');
+            showNotification('Spam count: ' + globalTimesCounter, 'Success');
         });
 
 }

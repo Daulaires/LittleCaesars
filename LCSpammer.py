@@ -80,7 +80,7 @@ def create_account(driver, email, password):
         # Some sleep to prevent skipping over the click.
         time.sleep(1.2)
         continue_button.click()
-        time.sleep(1.5)
+        time.sleep(2.5)
         logging.info("\033[92mRedirected to the create account page and elements are ready.\033[0m")
     except NoSuchElementException:
         logging.error("\033[91mCreate Account link or form elements not found.\033[0m")
@@ -181,7 +181,7 @@ def Main(command, total_attempts):
 
 if __name__ == '__main__':
     # Define the thread to be ran. DOES NOT MAKE THE DRIVER ANY FASTER
-    t1 = threading.Thread(target=Main,name="t1",args=(args.command,total_attempts))
+    t1 = threading.Thread(target=Main,name="t1",args=(args.command,total_attempts),daemon=True)
     
     # To start a thread, we use the start() method of the Thread class.
     t1.start()

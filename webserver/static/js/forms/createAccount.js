@@ -31,7 +31,7 @@ document.getElementById('createAccountForm').addEventListener('submit', function
                 return response.json();
             } else {
                 const text = await response.text();
-                showNotification('Error: ' + text, 'Error', document.body);
+                showNotification('Error: ' + text, 'Error');
                 throw new Error(text);
             }
         })

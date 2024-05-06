@@ -5,6 +5,7 @@
 # Date: 2024-05-04 3:33AM
 # 
 
+from random import Random
 import requests
 import argparse
 from concurrent.futures import ThreadPoolExecutor
@@ -39,7 +40,7 @@ def create_account(email, firstname, lastname, password):
         "password": password,
         "nomnom": {
             "zip": None,
-            "dobyear": "1904",
+            "dobyear": Random().randint(1970, 2000),
             "country": "USA"
         }
     }
@@ -55,10 +56,26 @@ def create_account(email, firstname, lastname, password):
     session = requests.Session()
     response = session.post(url, json=data, headers=headers)
     if response.status_code == 200:
-        print(f"[+] Account created for {email}")
+        # encrypt the response so the user doesn't see this 
+        print(f"[\033[92m+\033[0m] {response.status_code} {email} {password}")
     else:
-        print(f"[-] Failed to create account for {email}. Status code: {response.status_code}")
-        print(response.text)
+        print(f'[\033[91m-\033[0m] {response.status_code} {email} {password}')
+
+def randomlyGeneratedAccount():
+    import random
+    import string
+    email = ''.join(random.choices(string.ascii_lowercase + string.digits, k=10)) + '@gmail.com'
+    firstname = ''.join(random.choices(string.ascii_lowercase, k=10))
+    lastname = ''.join(random.choices(string.ascii_lowercase, k=10))
+    password = ''.join(random.choices(string.ascii_lowercase + string.digits, k=10))
+    password = password[:1].upper() + password[1:]  # Make the first character uppercase
+    password += ''.join(random.choices(string.ascii_uppercase, k=2))
+    return email, firstname, lastname, password
+
+def createAccountWithRandomData():
+    email, firstname, lastname, password = randomlyGeneratedAccount()
+    create_account(email, firstname, lastname, password)
+    return email, firstname, lastname, password
 
 parser = argparse.ArgumentParser(description='Wingstop Spammer and Account Creator')
 subparsers = parser.add_subparsers(dest='command')
@@ -74,15 +91,23 @@ create_account_parser.add_argument('lastname', type=str, help='The last name for
 create_account_parser.add_argument('password', type=str, help='The password for the new account.')
 create_account_parser.add_argument('times', type=int, help='The number of times to attempt account creation.', default=1)
 
+create_account_with_random_data_parser = subparsers.add_parser('create_account_with_random_data', help='Create a new Wingstop account with random data.')
+create_account_with_random_data_parser.add_argument('times', type=int, help='The number of times to attempt account creation.', default=1)
+
 args = parser.parse_args()
 
 if args.command == 'spam':
     # SPAM THE EMAIL
-    with ThreadPoolExecutor(max_workers=2) as executor:
+    with ThreadPoolExecutor(max_workers=4) as executor:
         for _ in range(args.times):
             executor.submit(send_email, args.email)
 elif args.command == 'create_account':
     # CREATE ACCOUNT
-    with ThreadPoolExecutor(max_workers=2) as executor:
+    with ThreadPoolExecutor(max_workers=4) as executor:
         for _ in range(args.times):
             executor.submit(create_account, args.email, args.firstname, args.lastname, args.password)
+elif args.command == 'create_account_with_random_data':
+    # CREATE ACCOUNT WITH RANDOM DATA
+    with ThreadPoolExecutor(max_workers=4) as executor:
+        for _ in range(args.times):
+            executor.submit(createAccountWithRandomData)

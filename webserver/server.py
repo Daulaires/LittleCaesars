@@ -17,11 +17,26 @@ accounts = {}
 
 # include the global_spam_count.json file
 global_spam_count_file = 'static/data/global_spam_count.json'
+accounts_created_file = 'static/data/accounts_created_count.json'
+
+def load_accounts_created_count():
+    if not os.path.exists(accounts_created_file):
+        with open(accounts_created_file, 'w') as file:
+            json.dump({"total_accounts_created": 0}, file)
+    with open(accounts_created_file, 'r') as file:
+        return json.load(file)
+
 
 @app.route('/')
 def index():
     logging.info("Index page accessed")
     return render_template('index.html')
+
+@app.route('/v1/get_accounts_created_count', methods=['GET'])
+def get_accounts_created_count():
+    logging.info("Received GET request to get accounts created count")
+    accounts_data = load_accounts_created_count()
+    return jsonify(accounts_data), 200
 
 @app.route('/v1/get_global_spam_count', methods=['GET'])
 def get_global_spam_count():
@@ -98,8 +113,8 @@ def create_account():
     # Extract data from the request
     data = request.get_json()
     email = data.get('email')
-    password = data.get('password')  # Assuming you have a password field for account creation
-    
+    password = data.get('password') # Assuming you have a password field for account creation
+
     # Basic validation
     if not email or not password:
         abort(400, description="Missing email or password")
@@ -109,14 +124,20 @@ def create_account():
         abort(400, description=f"Email {email} is already registered.")
         
     os.system(f'python static/python/LCSpammer.py create_account {email} {password}')
-    #create_account, args.email, args.firstname, args.lastname, args.password
     os.system(f'python static/python/WSSpammer.py create_account {email} Adfsdf Sdfsdf {password} 1')
     
     # For demonstration, we'll just add it to a dictionary
-    accounts[email] = {"password": password}  # Storing password in plain text is insecure in real applications
+    accounts[email] = {"password": password} # Storing password in plain text is insecure in real applications
     logging.info(f"Account created for email: {email}")
     
-    return jsonify({"status": "OK", "data": f"{email}."}), 200
+    # Increment and save the total accounts created count
+    accounts_data = load_accounts_created_count()
+    accounts_data["total_accounts_created"] += 1
+    with open(accounts_created_file, 'w') as file:
+        json.dump(accounts_data, file)
+    
+    return jsonify({"status": "OK", "data": f"{email}"}), 200
+
 
 @app.route('/v1/create_account_with_random_data', methods=['GET'])
 def create_account_with_random_data():
@@ -138,7 +159,14 @@ def create_account_with_random_data():
     print(output)
     logging.info("Account created with random data")
     
+    # Increment and save the total accounts created count
+    accounts_data = load_accounts_created_count()
+    accounts_data["total_accounts_created"] += 1
+    with open(accounts_created_file, 'w') as file:
+        json.dump(accounts_data, file)
+    
     return jsonify({"status": "OK", "data": f"{output.replace('\n','').replace('[+] ','')}"}), 200
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0",port=999,debug=True)
