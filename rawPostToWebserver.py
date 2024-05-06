@@ -103,7 +103,7 @@ def random_account_custom():
     # Now, password is guaranteed to be 8 characters long, have at least one capital letter, and not contain the same characters as the email
     createAccount(email, password)
         
-parser = argparse.ArgumentParser(description="TestHack to post request to webserver.")
+parser = argparse.ArgumentParser(description="Test 'Hack' to post request to webserver.")
 subparsers = parser.add_subparsers(dest="command")
 
 spam_parser = subparsers.add_parser('spam', help='Spam the email.')

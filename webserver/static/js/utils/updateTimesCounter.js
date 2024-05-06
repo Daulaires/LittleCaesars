@@ -1,4 +1,4 @@
-GetGlobalTimesCounter = () => {
+GetGlobalTimesCounter = function() {
     fetch('/v1/get_global_spam_count')
         .then(response => response.json())
         .then(data => {
