@@ -2,12 +2,13 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" name="viewport"
-        content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0">
-    <meta charset="UTF-8" name="description" content="Email Spammer testing website.">
-    <meta charset="UTF-8" name="theme-color" content="#000000">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
+    <meta name="description" content="Email Spammer testing website.">
+    <meta name="theme-color" content="#000000">
     <title>Email Spammer</title>
     <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <!-- Consolidated link tags -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/watermark.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/websiteList.css') }}">
@@ -23,7 +24,8 @@
 </head>
 
 <body class="light-mode">
-    <div id="notificationContainer"></div>
+    <div id="notificationContainer">
+    </div>
     <button id="menuToggle" aria-label="Toggle Menu">Menu</button>
     <div id="menu" style="display: none;">
         <button id="themeToggle">Toggle Dark Mode</button>
@@ -55,7 +57,8 @@
             <button type="submit" id="createAccountButton">Create Account</button>
         </form>
     </div>
-    <img src="{{ url_for('static', filename='images/favicon.ico') }}" id="watermark" alt="Watermark">
+    <img src="{{ url_for('static', filename='images/favicon.ico') }}" id="watermark" alt="Email Spammer Watermark">
+    <!-- Script tags -->
     <script defer src="{{ url_for('static', filename='js/menu/menu.js') }}"></script>
     <script defer src="{{ url_for('static', filename='js/forms/spamForm.js') }}"></script>
     <script defer src="{{ url_for('static', filename='js/utils/notification.js') }}"></script>

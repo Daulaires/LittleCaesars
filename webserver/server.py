@@ -4,12 +4,14 @@
 # Author: @Daulaires / https://www.github.com/Daulaires/LittleCaesarsEmailSpammer
 # Date: 2024-05-02
 # 
+import hashlib
 import json
 import os
 import subprocess
 import tempfile
 from flask import Flask, jsonify, render_template, request, abort
 import logging
+import re
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 processing_emails = {}
@@ -19,12 +21,33 @@ accounts = {}
 global_spam_count_file = 'static/data/global_spam_count.json'
 accounts_created_file = 'static/data/accounts_created_count.json'
 
+def validate_email(email):
+    pattern = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
+    return bool(re.match(pattern, email))
+
+def sanitize_password(password):
+    # Remove special characters
+    sanitized_password = ''.join(e for e in password if e.isalnum())
+    # Hash the password for storage (for demonstration purposes)
+    hashed_password = hashlib.sha256(sanitized_password.encode()).hexdigest()
+    return hashed_password
+
 def load_accounts_created_count():
     if not os.path.exists(accounts_created_file):
         with open(accounts_created_file, 'w') as file:
             json.dump({"total_accounts_created": 0}, file)
     with open(accounts_created_file, 'r') as file:
         return json.load(file)
+
+def validate_positive_integer(value):
+    try:
+        num = int(value)
+        if num > 0:
+            return True
+        else:
+            return False
+    except ValueError:
+        return False
 
 
 @app.route('/')
@@ -52,6 +75,14 @@ def send_spam():
     data = request.get_json()
     email = data.get('email')
     times = data.get('times')
+    
+    # Validate and sanitize email
+    if not validate_email(email):
+        abort(400, description="Invalid email format")
+    
+    # Validate and sanitize times
+    if not validate_positive_integer(times):
+        abort(400, description="Invalid number of times")
     
     if email in processing_emails and processing_emails[email]:
         logging.info(f"Skipping email {email} as it's already being processed.")
@@ -114,10 +145,12 @@ def create_account():
     data = request.get_json()
     email = data.get('email')
     password = data.get('password') # Assuming you have a password field for account creation
-
-    # Basic validation
-    if not email or not password:
-        abort(400, description="Missing email or password")
+    
+    if not validate_email(email):
+        abort(400, description="Invalid email format")
+        
+    if not password:
+        abort(400, description="Missing password")
     
     # Check if the email is already registered
     if email in accounts:

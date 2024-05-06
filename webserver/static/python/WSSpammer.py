@@ -57,9 +57,9 @@ def create_account(email, firstname, lastname, password):
     response = session.post(url, json=data, headers=headers)
     if response.status_code == 200:
         # encrypt the response so the user doesn't see this 
-        print(f"[\033[92m+\033[0m] {response.status_code} {email} {password}")
+        print(f"{email}:{password}, Status Code: {response.status_code}")
     else:
-        print(f'[\033[91m-\033[0m] {response.status_code} {email} {password}')
+        print(f'{email}:{password}, Status Code: {response.status_code}')
 
 def randomlyGeneratedAccount():
     import random
