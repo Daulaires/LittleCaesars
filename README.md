@@ -21,4 +21,5 @@
     - Just was a way I found most websites allowed, such as CNN.com with some little recode to the script.
     - Well there is no limit, or security setup for the reset password.
     - Many big companies have vulnerabilities, but some just funny ones.
-![image](https://github.com/Daulaires/ResetPasswordSpammer/assets/102845355/19f39580-0527-4314-92b9-78c3dd1c91f6)
+![image](https://github.com/Daulaires/ResetPasswordSpammer/assets/102845355/f6159926-805b-4583-95b2-f9c839eb13d5)
+
