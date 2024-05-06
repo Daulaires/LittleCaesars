@@ -11,6 +11,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Check if the user prefers dark mode
+    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    // Set the initial theme based on the user's preference
+    if (prefersDarkMode) {
+        // remove the light-mode class if it exists
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+    } else {
+        // remove the dark-mode class if it exists
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+    }
+
     // Initial call to set the correct text on page load
     updateButtonText();
 

@@ -8,9 +8,8 @@ body.dark-mode .WebsiteList {
     font-weight: bold;
     opacity: 1;
     transition: background-color 1s ease-in-out;
-    background-color: #000000;
+    background-color: #00000000;
     color: #ffffff;
-    box-shadow: 0 0px 6px #ffffff;
 }
 
 body.dark-mode .WebsiteList a,
@@ -33,6 +32,13 @@ body.light-mode .WebsiteList {
     box-shadow: 0 0px 6px #000000;
 }
 
+/* if on mobile, make the WebsiteList div full width */
+@media (max-width: 600px) {
+    body.light-mode .WebsiteList {
+        width: 100%;
+    }
+}
+
 
 body.dark-mode .WebsiteList a:visited {
     color: #ffffff;
@@ -45,23 +51,30 @@ body.light-mode .WebsiteList a:visited {
 body.light-mode .WebsiteList,
 body.dark-mode .WebsiteList ul {
     transform: scale(1);
+
     transition: transform 1s ease-in-out, box-shadow 1s ease-in-out;
-    box-shadow: 0 0 6px #ffffff;
-    background-image: linear-gradient(160deg, #cecece, #4d4d4d, #ffffff, #4d4d4d, #4d4d4d);
+    background-image: linear-gradient(160deg, #cecece, #4d4d4d, #ffffff, #4d4d4d, #ffffff, #ffffff, #4d4d4d, #cecece);
     background-size: 600% 600%;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: rainbow 1s linear infinite;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* make borders invisible */
+    border: none;
 }
 
 body.light-mode .WebsiteList:hover,
 body.dark-mode .WebsiteList ul:hover {
-    /* Define how the transform property should change on hover */
+    box-shadow: 0 0px 6px #ffffff;
+    border-radius: 5px;
     transform: scale(1.05);
-    /* Scale up slightly */
-    box-shadow: 0 0 10px #ffffff;
-    /* Increase the shadow for a subtle effect */
     animation: rainbow 1s linear infinite;
     transition: transform 1s ease-in-out, box-shadow 1s ease-in-out;
 }

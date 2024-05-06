@@ -11,13 +11,19 @@ document.addEventListener('DOMContentLoaded', function () {
         })
             .then(async response => {
                 if (response.ok) {
-                    showNotification('Account: ' + await response.text(), 'Success', body);
-                    return response.json();
+                    // Assuming the response is JSON, use response.json()
+                    const data = await response.json();
+                    showNotification('Account: ' + JSON.stringify(data), 'Success', body);
+                    return data;
                 } else {
                     const text = await response.text();
                     showNotification('Error: ' + text, 'Error', body);
                     throw new Error(text);
                 }
             })
+            .catch(error => {
+                console.error('Error:', error);
+                showNotification('Error: ' + error.message, 'Error', body);
+            });
     });
 });

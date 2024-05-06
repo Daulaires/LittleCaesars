@@ -4,8 +4,9 @@ GetGlobalTimesCounter = () => {
         .then(data => {
             globalTimesCounter = data.total_spam_count;
             // update the globalTimesCounter in the html
-            document.getElementById("emailSpamCounter").innerHTML = "Total spam count: " + globalTimesCounter;
+            showNotification('Total spam count: ' + globalTimesCounter, 'Success');
         });
+
 }
 
 GetGlobalTimesCounter();

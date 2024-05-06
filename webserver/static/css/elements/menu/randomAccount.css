@@ -11,6 +11,19 @@ body.light-mode #RandomAccount {
     box-shadow: 0 0px 6px #ffffff;
 }
 
+body.dark-mode #RandomAccount {
+    position: absolute;
+    top: 130px;
+    left: 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0px 6px #ffffff;
+}
+
 body.light-mode #RandomAccount:active {
     transform: scale(0.95);
     box-shadow: 0 0px 4px #000000;

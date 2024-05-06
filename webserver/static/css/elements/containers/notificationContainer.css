@@ -18,17 +18,40 @@
     }
 }
 
-#notificationContainer {
+body.light-mode #notificationContainer {
     position: fixed;
-    top: 50px;
-    right: 20px;
+    top: 60px;
+    right: 10px;
     z-index: 1000;
     pointer-events: none;
     display: flex;
     flex-direction: column;
 }
 
-.notification {
+body.light-mode .notification {
+    background-color: #ffffff;
+    color: #040404;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: none;
+    pointer-events: auto;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);
+    border: 1px solid #333;
+    opacity: 0;
+}
+
+body.dark-mode #notificationContainer {
+    position: fixed;
+    top: 60px;
+    right: 10px;
+    z-index: 1000;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+}
+
+body.dark-mode .notification {
     background-color: #000000;
     color: #fff;
     padding: 10px;
@@ -41,16 +64,20 @@
     opacity: 0;
 }
 
-/* if user prefers dark mode */
-@media (prefers-color-scheme: dark) {
-
-}
-
-.notification.show {
+body.light-mode .notification.show {
     animation: fadeIn 0.5s ease-in-out forwards;
     display: block;
 }
 
-.notification.hide {
+body.light-mode .notification.hide {
+    animation: fadeOut 0.5s ease-in-out forwards;
+}
+
+body.dark-mode .notification.show {
+    animation: fadeIn 0.5s ease-in-out forwards;
+    display: block;
+}
+
+body.dark-mode .notification.hide {
     animation: fadeOut 0.5s ease-in-out forwards;
 }

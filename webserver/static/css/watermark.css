@@ -7,3 +7,21 @@
     border-radius: 5px;
     z-index: 1000;
 }
+
+/* make animation for the watermark to constantly rotate */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* apply the animation to the watermark */
+#watermark {
+    /* round the corners */
+    border-radius: 50px;
+    animation: rotate 10s linear infinite;
+}
