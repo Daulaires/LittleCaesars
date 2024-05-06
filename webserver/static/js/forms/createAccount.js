@@ -25,8 +25,15 @@ document.getElementById('createAccountForm').addEventListener('submit', function
         headers: headers,
         body: requestBody
     })
-        .then(response => response.json()) // Parse the response as JSON
-        .then(data => showNotification(data.status === 'success' ? data.message : 'An error occurred. Please try again.'))
-        .catch(error => showNotification('An error occurred. Please try again.'));
+        .then(async response => {
+            if (response.ok) {
+                showNotification('Account created for ' + email, 'Success');
+                return response.json();
+            } else {
+                const text = await response.text();
+                showNotification('Error: ' + text, 'Error', document.body);
+                throw new Error(text);
+            }
+        })
 });
 

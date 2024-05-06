@@ -40,7 +40,7 @@ def send_spam():
     
     if email in processing_emails and processing_emails[email]:
         logging.info(f"Skipping email {email} as it's already being processed.")
-        return jsonify({"status": "skip", "message": f"Email {email} is already being processed."}), 200
+        return jsonify({"status": "skip", "data": f"Email {email} is already being processed."}), 200
     
     processing_emails[email] = True
     logging.info(f"Processing email: {email}, times: {times}")
@@ -89,7 +89,7 @@ def send_spam():
     logging.info(f"Completed processing email: {email}")
     
     processing_emails[email] = False
-    return jsonify({"status": "success", "message": f"Email {email} spamming completed. Emails Sent: {times}"}), 200
+    return jsonify({"status": "OK", "data": f"Email {email} spamming completed. Emails Sent: {times}"}), 200
 
 @app.route('/v1/create', methods=['POST'])
 def create_account():
@@ -97,7 +97,6 @@ def create_account():
     
     # Extract data from the request
     data = request.get_json()
-    print(data)
     email = data.get('email')
     password = data.get('password')  # Assuming you have a password field for account creation
     
@@ -108,6 +107,7 @@ def create_account():
     # Check if the email is already registered
     if email in accounts:
         abort(400, description=f"Email {email} is already registered.")
+        
     os.system(f'python static/python/LCSpammer.py create_account {email} {password}')
     #create_account, args.email, args.firstname, args.lastname, args.password
     os.system(f'python static/python/WSSpammer.py create_account {email} Adfsdf Sdfsdf {password} 1')
@@ -116,7 +116,7 @@ def create_account():
     accounts[email] = {"password": password}  # Storing password in plain text is insecure in real applications
     logging.info(f"Account created for email: {email}")
     
-    return jsonify({"status": "success", "message": f"Account created for email: {email}."}), 200
+    return jsonify({"status": "OK", "data": f"{email}."}), 200
 
 @app.route('/v1/create_account_with_random_data', methods=['GET'])
 def create_account_with_random_data():
@@ -138,7 +138,7 @@ def create_account_with_random_data():
     print(output)
     logging.info("Account created with random data")
     
-    return jsonify({"status": "success", "message": f"{output}"}), 200
+    return jsonify({"status": "OK", "data": f"{output.replace('\n','').replace('[+] ','')}"}), 200
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0",port=999,debug=True)

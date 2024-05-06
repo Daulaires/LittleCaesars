@@ -25,14 +25,15 @@ document.getElementById('spamForm').addEventListener('submit', function (event) 
         headers: headers,
         body: requestBody
     })
-        .then(response => response.json()) // Parse the response as JSON
-        .then(data => {
-            // Use the showNotification function to display a success message
-            showNotification(data.status === 'success' ? data.message : 'Please wait for the previous request to complete.');
+        .then(async response => {
+            if (response.ok) {
+                showNotification(email + ' ' + times + ' times', 'Success');
+                return response.json();
+            } else {
+                const text = await response.text();
+                showNotification('Error: ' + text, 'Error', document.body);
+                throw new Error(text);
+            }
         })
-        .catch(error => {
-            // Use the showNotification function to display an error message
-            showNotification('Please wait for the previous request to complete.');
-        });
 });
 

@@ -28,18 +28,16 @@ body.dark-mode #toggleCreateAccountForm {
 
 body.light-mode #toggleCreateAccountForm:active,
 body.dark-mode #toggleCreateAccountForm:active {
-    transform: scale(0.95); /* Slightly reduce the size of the button */
-    box-shadow: 0 0px 4px #000000; /* Adjust the shadow for a pressed effect */
+    transform: scale(0.95);
+    box-shadow: 0 0px 4px #000000;
 }
 
-/* For light mode, you might want to change the background color slightly */
 body.light-mode #toggleCreateAccountForm:active {
-    background-color: #333333; /* Darker shade for pressed effect */
+    background-color: #333333;
 }
 
-/* For dark mode, you might want to change the background color slightly */
 body.dark-mode #toggleCreateAccountForm:active {
-    background-color: #333333; /* Darker shade for pressed effect */
+    background-color: #333333;
 }
 
 body.light-mode #toggleCreateAccountForm:hover,

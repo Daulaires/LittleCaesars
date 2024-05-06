@@ -25,7 +25,6 @@ body.light-mode #menuToggle {
     transition: background-color 1s ease, color 1s ease;
 }
 
-
 body.dark-mode #menuToggle {
     box-shadow: 0 0px 6px #ffffff;
     background-color: #000000;
@@ -37,8 +36,6 @@ body.dark-mode #menuToggle {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: #000000;
-    color: white;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -61,7 +58,22 @@ body.dark-mode #menuToggle {
     opacity: 0.8;
 }
 
-/* when pressed */
 #menuToggle:active {
     opacity: 0.6;
+}
+
+@media (prefers-color-scheme: dark) {
+    body.light-mode #menuToggle {
+        box-shadow: 0 0px 6px #000000;
+        background-color: #020202;
+        color: #ffffff;
+        transition: background-color 1s ease, color 1s ease;
+    }
+
+    body.dark-mode #menuToggle {
+        box-shadow: 0 0px 6px #ffffff;
+        background-color: #000000;
+        color: #ffffff;
+        transition: background-color 0.5s ease, color 1s ease;
+    }
 }
