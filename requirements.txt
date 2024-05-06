@@ -107,6 +107,6 @@ uncompyle6==3.7.4
 urllib3==2.1.0
 wasabi==1.1.2
 weasel==0.3.4
-Werkzeug==3.0.2
+Werkzeug==3.0.3
 wsproto==1.2.0
 xdis==5.0.13
