@@ -5,8 +5,8 @@ document.getElementById('createAccountForm').addEventListener('submit', function
     const password = formData.get('password');
     const url = '/v1/create';
     const requestBody = JSON.stringify({ email: email, password: password });
-    const headers = { 'Content-Type': 'application/json' };
-    fetch(url, { method: 'POST', headers: headers, body: requestBody }).then(async response => {
+    const postHeaders = { 'Content-Type': 'application/json' };
+    fetch(url, { method: 'POST', headers: postHeaders, body: requestBody }).then(async response => {
         if (response.ok) {
             showNotification('Account created for ' + email, 'Success');
             return response.json();
@@ -15,5 +15,5 @@ document.getElementById('createAccountForm').addEventListener('submit', function
             showNotification('Error: ' + text, 'Error');
             throw new Error(text);
         }
-    })
+    });
 });

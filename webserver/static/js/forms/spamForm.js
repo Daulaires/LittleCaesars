@@ -1,30 +1,15 @@
-document.getElementById('spamForm').addEventListener('submit', function (event) {
+// Function to handle form submission
+function handleSubmit(event) {
     event.preventDefault(); // Prevent the form from submitting normally
 
     const formData = new FormData(this);
     const email = formData.get('email');
     const times = formData.get('times');
 
-    // Construct the URL for the POST request
-    const url = '/v1/spam'; // Assuming the Flask app is running on the same domain
+    const requestBody = createRequestBody(email, times);
+    const url = '/v1/spam';
 
-    // Prepare the request body
-    const requestBody = JSON.stringify({
-        email: email,
-        times: times
-    });
-
-    // Set the request headers
-    const headers = {
-        'Content-Type': 'application/json'
-    };
-
-    // Send the POST request to the Flask app
-    fetch(url, {
-        method: 'POST',
-        headers: headers,
-        body: requestBody
-    })
+    sendPostRequest(url, requestBody)
         .then(async response => {
             if (response.ok) {
                 showNotification(email + ' ' + times + ' times', 'Success');
@@ -34,6 +19,31 @@ document.getElementById('spamForm').addEventListener('submit', function (event) 
                 showNotification('Error: ' + text, 'Error', document.body);
                 throw new Error(text);
             }
-        })
-});
+        });
+}
 
+// Function to create the request body
+function createRequestBody(email, times) {
+    return JSON.stringify({
+        email: email,
+        times: times
+    });
+}
+
+// Function to send the POST request
+function sendPostRequest(url, requestBody) {
+    const postHeaders = {
+        'Content-Type': 'application/json'
+    };
+
+    const fullUrl = 'http://127.0.0.1:999' + url; // Replace 'example.com' with your website's domain
+
+    return fetch(fullUrl, {
+        method: 'POST',
+        headers: postHeaders,
+        body: requestBody
+    });
+}
+
+// Attach the event listener to the form
+document.getElementById('spamForm').addEventListener('submit', handleSubmit);

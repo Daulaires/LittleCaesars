@@ -1,4 +1,4 @@
-updateData = function() {
+updateData = function () {
     fetch('/v1/get_accounts_created_count')
         .then(response => response.json())
         .then(data => {

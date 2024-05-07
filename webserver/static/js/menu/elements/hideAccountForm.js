@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     const toggleCreateAccountFormButton = document.getElementById('toggleCreateAccountForm');
-    const createAccountForm = document.getElementById('createAccountForm');
+    const createAccountFormElement = document.getElementById('createAccountForm');
 
     // Function to update the button text based on the current visibility of the form
     function updateButtonText() {
-        if (createAccountForm.style.display === 'none') {
+        if (createAccountFormElement.style.display === 'none') {
             toggleCreateAccountFormButton.textContent = 'Show Create Account';
         } else {
             toggleCreateAccountFormButton.textContent = 'Hide Create Account';
@@ -15,16 +15,16 @@ document.addEventListener('DOMContentLoaded', function () {
     updateButtonText();
 
     toggleCreateAccountFormButton.addEventListener('click', function () {
-        if (createAccountForm.style.display === 'none') {
+        if (createAccountFormElement.style.display === 'none') {
             // remove hide
-            createAccountForm.classList.remove('hide');
-            createAccountForm.style.display = 'block';
+            createAccountFormElement.classList.remove('hide');
+            createAccountFormElement.style.display = 'block';
         } else {
             setTimeout(function () {
-                createAccountForm.classList.add('hide');
+                createAccountFormElement.classList.add('hide');
             }, 500);
             setTimeout(function () {
-                createAccountForm.style.display = 'none';
+                createAccountFormElement.style.display = 'none';
             }, 1000);
         }
         // Update the button text after toggling the form's visibility

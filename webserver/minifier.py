@@ -33,8 +33,50 @@ def combine_js_files(directory, output_file):
                     # Prepend a newline character to ensure proper spacing
                     combined_content += "\n" + minified_content
     
-    # Prepend a simple JavaScript function declaration to avoid missing function errors
-    combined_content = combined_content
+    # Prepend a self-executing anonymous function to disable console usage
+    combined_content = combined_content.replace("console.log", "").replace("console.error", "")
+    
+    # Replace long variable names with shorter ones / "obfuscation"
+    variable_replacements = {
+        "url": "U",
+        "message": "m",
+        "fullUrl": "fU",
+        "response": "r",
+        "showMenu": "sM",
+        "hideMenu": "hM",
+        "updateData": "uD",
+        "postHeaders": "pH",
+        "handleError": "hE",
+        "requestBody": "rB",
+        "handleSubmit": "hS",
+        "toggleButton": "tB",
+        "menuContainer": "mC",
+        "handleResponse": "hR",
+        "accountsCreated": "aC",
+        "showNotification": "sN",
+        "_notification_": "N",
+        "_NotificationContainer_": "nC",
+        "sendPostRequest": "sPR",
+        "SpamFormElement": "sFE",
+        "prefersDarkMode": "pDM",
+        "menuToggleButton": "mTB",
+        "updateButtonText": "uBT",
+        "handleMenuToggle": "hMT",
+        "randomAccountBody": "rAB",
+        "createRequestBody": "cRB",
+        "RandomAccountButton": "RAB",
+        "createAccountSubmit": "cAS",
+        "toggleSpamFormButton": "tSFB",
+        "GetGlobalTimesCounter": "gGTC",
+        "globalTimesCounter": "gTC",
+        "createAccountFormElement": "cAFE",
+        "toggleCreateAccountFormButton": "tCAFB"
+    }
+
+    for variable, replacement in variable_replacements.items():
+        combined_content = combined_content.replace(variable, replacement)
+    
+    combined_content = f"(function(){{\n{combined_content}\n}})();"
     
     # Write the combined content to the output file
     with open(output_file, 'w') as file:

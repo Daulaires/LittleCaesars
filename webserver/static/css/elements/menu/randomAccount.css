@@ -37,3 +37,47 @@ body.dark-mode #RandomAccount:active {
     background-color: #333333;
     color: #ffffff;
 }
+
+/* Hover Animations */
+
+body.light-mode #RandomAccount:hover,
+body.light-mode #RandomAccount:focus {
+    animation: light-mode-colorChange 2s infinite;
+}
+
+body.dark-mode #RandomAccount:hover,
+body.dark-mode #RandomAccount:focus {
+    animation: dark-mode-colorChange 2s infinite;
+}
+
+@keyframes light-mode-colorChange {
+    0% {
+        background-color: #212121;
+        color: #ffffff;
+    }
+
+    50% {
+        background-color: #656565;
+        color: #ffffff;
+    }
+
+    100% {
+        background-color: #212121;
+        color: #ffffff;
+    }
+}
+
+
+@keyframes dark-mode-colorChange {
+    0% {
+        background-color: #000000;
+    }
+
+    50% {
+        background-color: #656565;
+    }
+
+    100% {
+        background-color: #000000;
+    }
+}

@@ -40,6 +40,8 @@ body.dark-mode #toggleCreateAccountForm:active {
     background-color: #333333;
 }
 
+/* Hover Animations */
+
 body.light-mode #toggleCreateAccountForm:hover,
 body.light-mode #toggleCreateAccountForm:focus {
     animation: light-mode-colorChange 2s infinite;

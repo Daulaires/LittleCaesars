@@ -78,10 +78,11 @@ def create_account(driver, email, password):
         confirm_password_input.send_keys(password)
         terms_checkbox.click()
         # Some sleep to prevent skipping over the click.
-        time.sleep(1.2)
+        time.sleep(1.3)
         continue_button.click()
-        time.sleep(2.5)
+        time.sleep(4.5)
         logging.info("\033[92mRedirected to the create account page and elements are ready.\033[0m")
+        
     except NoSuchElementException:
         logging.error("\033[91mCreate Account link or form elements not found.\033[0m")
 
@@ -122,6 +123,7 @@ args = parser.parse_args()
 # Setup Chrome options
 options = webdriver.ChromeOptions()
 
+# Run Chrome in headless mode
 options.add_argument("--headless")
 
 # Increase the browser window size

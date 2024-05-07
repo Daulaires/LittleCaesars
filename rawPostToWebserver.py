@@ -1,3 +1,4 @@
+import time
 import requests
 import argparse
 import random
@@ -61,10 +62,14 @@ def createAccount(email,password):
 
     # Check the response
     if response.status_code == 200:
-        # make it green 
-        print("\033[92m" + data['email'] + "\033[0m " + "\033[92m" + data['password'] + "\033[0m " + f"{response.status_code}")
+        # print the response if it is successful
+        responseText = response.text.replace('\n', '')
+        for (key, value) in data.items():
+            responseText = responseText.replace(value, "\033[92m" + value + "\033[0m")
+            
+        print(responseText)
     else:
-        print("\033[91m" + response.json()['data'] + "\033[0m")
+        print("\033[91m" + response.json()['data'].replace('\n', '') + "\033[0m")
 
 def GetRandomAccountRequest():
     # /v1/create_account_with_random_data
@@ -133,6 +138,8 @@ elif args.command == "random_account_custom":
         random_account_custom()
 elif args.command == "random_account_request":
     for i in range(args.times):
+        # make it sleep for 4 seconds
+        time.sleep(4)
         GetRandomAccountRequest()
 elif args.times == None:
     print("[!] python index.py email times")

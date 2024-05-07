@@ -21,10 +21,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Check if the user prefers dark mode
-
-
-
     // Initial call to set the correct text on page load
     updateButtonText();
 

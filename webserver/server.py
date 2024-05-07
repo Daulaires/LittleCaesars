@@ -7,6 +7,8 @@
 import hashlib
 import json
 import os
+import random
+import string
 import subprocess
 import tempfile
 from flask import Flask, jsonify, render_template, request, abort
@@ -49,10 +51,17 @@ def validate_positive_integer(value):
     except ValueError:
         return False
 
+def generate_first_name():
+    return ''.join(random.choices(string.ascii_lowercase, k=10))
+
+def generate_last_name():
+    return ''.join(random.choices(string.ascii_lowercase, k=10))
+
 @app.route('/')
 def index():
     logging.info("Index page accessed")
-    return render_template('index.html')
+    headers = {'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'en-US,en;q=0.9'}
+    return render_template('index.html', headers=headers)
 
 @app.route('/v1/get_accounts_created_count', methods=['GET'])
 def get_accounts_created_count():
@@ -85,7 +94,11 @@ def send_spam():
     
     if email in processing_emails and processing_emails[email]:
         logging.info(f"Skipping email {email} as it's already being processed.")
-        return jsonify({"status": "skip", "data": f"Email {email} is already being processed."}), 200
+        try:
+            return jsonify({"status": "skip", "data": f"Email {email} is already being processed."}), 400
+        except Exception as e:
+            logging.error(f"Error: {e}")
+            return jsonify({"status": "error", "data": f"Error: {e}"}), 500
     
     processing_emails[email] = True
     logging.info(f"Processing email: {email}, times: {times}")
@@ -151,12 +164,20 @@ def create_account():
     if not password:
         abort(400, description="Missing password")
     
-    # Check if the email is already registered
-    if email in accounts:
-        abort(400, description=f"Email {email} is already registered.")
+    if email in processing_emails and processing_emails[email]:
+        
+        logging.info(f"Skipping email {email} as it's already being processed.")
+        
+        try:
+            return jsonify({"status": "skip", "data": f"Email {email} is already being processed."}), 400
+        except Exception as e:
+            logging.error(f"Error: {e}")
+            return jsonify({"status": "error", "data": f"Error: {e}"}), 500
+        
+    processing_emails[email] = True
         
     os.system(f'python static/python/LCSpammer.py create_account {email} {password}')
-    os.system(f'python static/python/WSSpammer.py create_account {email} Adfsdf Sdfsdf {password} 1')
+    os.system(f'python static/python/WSSpammer.py create_account {email} {generate_first_name()} {generate_last_name()} {password} 1')
     
     # For demonstration, we'll just add it to a dictionary
     accounts[email] = {"password": password} # Storing password in plain text is insecure in real applications
@@ -164,11 +185,11 @@ def create_account():
     
     # Increment and save the total accounts created count
     accounts_data = load_accounts_created_count()
-    accounts_data["total_accounts_created"] += 1
+    accounts_data["total_accounts_created"] += 2
     with open(accounts_created_file, 'w') as file:
         json.dump(accounts_data, file)
-    
-    return jsonify({"status": "OK", "data": f"{email}"}), 200
+
+    return jsonify({"status": "OK", "data": f"Account created for email: {email}"}), 200
 
 
 @app.route('/v1/create_account_with_random_data', methods=['GET'])

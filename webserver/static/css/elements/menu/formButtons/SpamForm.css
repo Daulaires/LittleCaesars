@@ -26,6 +26,8 @@ body.dark-mode #toggleSpamForm {
     box-shadow: 0 0px 6px #ffffff;
 }
 
+/* Hover Animations */
+
 body.light-mode #toggleSpamForm:hover,
 body.light-mode #toggleSpamForm:focus {
     animation: light-mode-colorChange 2s infinite;
